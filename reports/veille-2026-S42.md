@@ -187,21 +187,21 @@ Dernière collecte : 13/10/2026.
 
 | Volet | Source | État | Détail | Relevé le |
 |---|---|---|---|---|
-| Presse | Novethic | ✅ | lus 10, retenus 2, nouveaux 2 | 13/10/2026 |
-| Presse | L'Info Durable | ✅ | lus 20, retenus 1, nouveaux 1 | 13/10/2026 |
+| Presse | Novethic | ✅ | lus 10, retenus 2, nouveaux 0 | 13/10/2026 |
+| Presse | L'Info Durable | ✅ | lus 20, retenus 1, nouveaux 0 | 13/10/2026 |
 | Presse | Actu-Environnement | ✅ | lus 7, retenus 0, nouveaux 0 | 13/10/2026 |
 | Presse | Qualiblog | ✅ | lus 10, retenus 0, nouveaux 0 | 13/10/2026 |
-| Presse | L'Usine Nouvelle | ✅ | lus 41, retenus 0, nouveaux 0 | 13/10/2026 |
+| Presse | L'Usine Nouvelle | ✅ | lus 42, retenus 0, nouveaux 0 | 13/10/2026 |
 | Presse | Maddyness | ✅ | lus 10, retenus 0, nouveaux 0 | 13/10/2026 |
-| Presse | FrenchWeb | ✅ | lus 100, retenus 4, nouveaux 4 | 13/10/2026 |
+| Presse | FrenchWeb | ✅ | lus 100, retenus 4, nouveaux 0 | 13/10/2026 |
 | Presse | CNIL | ✅ | lus 10, retenus 0, nouveaux 0 | 13/10/2026 |
-| Presse | ANACT | ✅ | lus 60, retenus 2, nouveaux 2 | 13/10/2026 |
+| Presse | ANACT | ✅ | lus 60, retenus 2, nouveaux 0 | 13/10/2026 |
 | Presse | Actu-Environnement (risques) | ✅ | lus 20, retenus 0, nouveaux 0 | 13/10/2026 |
-| Presse | Actu-Environnement (déchets) | ✅ | lus 20, retenus 1, nouveaux 1 | 13/10/2026 |
-| Presse | Actu-Environnement (énergie) | ✅ | lus 20, retenus 1, nouveaux 1 | 13/10/2026 |
-| Presse | Blog BlueKanGo | ✅ | lus 12, retenus 4, nouveaux 4 | 13/10/2026 |
+| Presse | Actu-Environnement (déchets) | ✅ | lus 20, retenus 1, nouveaux 0 | 13/10/2026 |
+| Presse | Actu-Environnement (énergie) | ✅ | lus 20, retenus 1, nouveaux 0 | 13/10/2026 |
+| Presse | Blog BlueKanGo | ✅ | lus 12, retenus 4, nouveaux 0 | 13/10/2026 |
 | Presse | Blog Preventeo | ✅ | lus 10, retenus 0, nouveaux 0 | 13/10/2026 |
-| Presse | Bing News (recherches) | ✅ | requêtes 36, lus 184, retenus 48, nouveaux 47, échecs 0 | 13/10/2026 |
+| Presse | Bing News (recherches) | ✅ | requêtes 36, lus 184, retenus 48, nouveaux 0, échecs 0 | 13/10/2026 |
 | Concurrents | Red-on-line (https://www.red-on-line.com) | ✅ | inchangée | 13/10/2026 |
 | Concurrents | Preventeo (https://www.preventeo.com) | ✅ | inchangée | 13/10/2026 |
 | Concurrents | Tennaxia (https://www.tennaxia.com) | ❌ | accès refusé aux robots (403) : suivi manuel | 13/10/2026 |
@@ -221,10 +221,10 @@ Dernière collecte : 13/10/2026.
 | Concurrents | BODACC Sweep | ✅ | annonces 0, nouvelles 0 | 13/10/2026 |
 | Concurrents | BODACC EcoVadis | ✅ | annonces 3, nouvelles 0 | 13/10/2026 |
 | Marché | Assurance Maladie (taille du marché) | ✅ | annee 2024, secteurs 22 | 13/10/2026 |
-| Marché | BOAMP (appels d'offres) | ✅ | avis 93, nouveaux 93 | 13/10/2026 |
+| Marché | BOAMP (appels d'offres) | ✅ | avis 93, nouveaux 0 | 13/10/2026 |
 | Marché | France Travail (offres d'emploi) | ⏸ | non configuré (FT_CLIENT_ID / FT_CLIENT_SECRET absents) | 13/10/2026 |
 | AT/MP | Assurance Maladie (sinistralité) | ✅ | annee 2024, lignes 88 | 13/10/2026 |
-| Réglementation | EUR-Lex | ✅ | actes 10, nouveaux 10 | 13/10/2026 |
+| Réglementation | EUR-Lex | ✅ | actes 10, nouveaux 0 | 13/10/2026 |
 
 - **Presse** : flux RSS spécialisés et recherches d'actualité Bing News, robots.txt respecté ; seuls le titre, le lien et un court extrait sont conservés (droit voisin de la presse).
 - **Réglementation** : actes et propositions publiés sur EUR-Lex (point d'accès SPARQL de l'Office des publications), filtrés par sujets et textes de référence.
