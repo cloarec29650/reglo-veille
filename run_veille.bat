@@ -22,6 +22,8 @@ if not errorlevel 1 (
 )
 
 git commit -q -m "Veille : collecte locale du %date%" >> "%LOG%" 2>&1
+REM Recupere d'abord les modifications faites sur GitHub (ex. fichiers ajoutes depuis Streamlit Cloud).
+git pull --rebase -q >> "%LOG%" 2>&1
 git push >> "%LOG%" 2>&1
 if errorlevel 1 (
     echo ECHEC du push : le commit est garde en local et partira au prochain passage. >> "%LOG%"
