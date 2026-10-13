@@ -1,6 +1,6 @@
 # Veille marché, semaine 42 de 2026
 
-Du 6 au 13 octobre 2026 : 24 articles retenus, 6 appels d'offres et aucun changement chez les concurrents.
+Du 6 au 13 octobre 2026 : 26 articles retenus, 7 appels d'offres et aucun changement chez les concurrents.
 
 ## À retenir
 
@@ -19,7 +19,7 @@ _Aucun nouvel acte ou proposition sur les sujets suivis pendant la période._
 
 ## Presse et tendances
 
-### Santé, sécurité & prévention (7)
+### Santé, sécurité & prévention (9)
 
 - [L'État demande que « 100 % » des collectivités élaborent un Document unique d'évaluation des risques professionnels d'ici deux ans](https://www.maire-info.com/fonction-publique/la-tat-demande-que-a-100-a-des-collectivita-s-a-laborent-un-document-unique-da-valuation-des-risques-professionnels-dici-deux-ans-art26-31167), Maire info (recherche d'actualité), 11/10/2026
   > Le Plan santé au travail dans la fonction publique 2026-2030 a été rendu public en fin de semaine dernière. Parmi les mesures annoncées, l'objectif de rendre effective l'obligation, pour chaque e ...
@@ -27,6 +27,10 @@ _Aucun nouvel acte ou proposition sur les sujets suivis pendant la période._
   > Vous employez au moins un salarié sur votre exploitation ? Le Document unique d’évaluation des risques professionnels (DUERP) fait partie des documents que vous devez établir.
 - [SANTÉ AU TRAVAIL : Hattab appelle à renforcer la prévention des risques professionnels](https://lecourrier-dalgerie.com/sante-au-travail-hattab-appelle-a-renforcer-la-prevention-des-risques-professionnels/), lecourrier-dalgerie (recherche d'actualité), 11/10/2026
   > Le ministre du Travail, de l’Emploi et de la Sécurité sociale, Mohamed Hattab, appelle à donner un nouvel élan à l’activité de l’Entreprise publique économique des services de médecine du travail, en ...
+- [Le Parlement européen demande d'inclure le burn-out dans les maladies professionnelles](https://www.lalibre.be/planete/sante/2026/10/06/le-parlement-europeen-demande-dinclure-le-burn-out-dans-les-maladies-professionnelles-NL55SNSUX5FDFHYXBWLZTH3BSU/), La Libre (recherche d'actualité), 06/10/2026
+  > Le Parlement européen demande la reconnaissance du burn-out comme maladie professionnelle pour mieux indemniser les travailleurs et inciter la ...
+- [Absentéisme en entreprise : comment faire face ?](https://www.lepoint.fr/societe/absenteisme-en-entreprise-comment-faire-face-NVDQ4IKKFBHAZC6RO3A3WD6WHY/), Le Point (recherche d'actualité), 13/10/2026
+  > La Fédération des intervenants en risques psychosociaux (Firps) vient de publier un guide invitant à « changer de regard » sur cet enjeu de société. Elle y propose aussi des leviers d’action concrets.
 - [Il a insisté sur une prise en charge plus efficace des risques professionnels : Mohamed Hattab veut renforcer la médecine du travail](https://www.elmoudjahid.dz/fr/actualite/il-a-insiste-sur-une-prise-en-charge-plus-efficace-des-risques-professionnels-mohamed-hattab-veut-renforcer-la-medecine-du-travail-260207), El Moudjahid (recherche d'actualité), 11/10/2026
   > Le ministre du Travail a particulièrement mis le doigt sur l’impératif de renforcer la prévention et le dépistage précoce des maladies liées à l’activité professionnelle.
 - [Les formations santé et sécurité face aux nouveaux enjeux du monde du travail](https://www.capital.fr/entreprises-marches/les-formations-sante-et-securite-face-aux-nouveaux-enjeux-du-monde-du-travail-1530676), Capital (recherche d'actualité), 09/10/2026
@@ -103,12 +107,17 @@ _Aucun changement détecté sur les pages suivies._
 
 | Concurrent | Page suivie | Suivie depuis | Versions |
 |---|---|---|---|
+| Agence Déclic | https://www.agence-declic.fr | 13/10/2026 | 1 |
 | BlueKanGo | https://www.bluekango.com | 12/10/2026 | 1 |
 | EcoVadis | https://ecovadis.com | 12/10/2026 | 1 |
+| Goodwill Management | https://goodwill-management.com | 13/10/2026 | 1 |
+| ORKI | https://orki.green | 13/10/2026 | 1 |
 | Preventeo | https://www.preventeo.com | 12/10/2026 | 1 |
 | Qualios | https://www.qualios.com | 12/10/2026 | 1 |
 | Red-on-line | https://www.red-on-line.com | 12/10/2026 | 1 |
 | Sweep | https://www.sweep.net | 12/10/2026 | 1 |
+| Utopies | https://utopies.com | 13/10/2026 | 1 |
+| ZEI | https://zei-world.com | 13/10/2026 | 1 |
 
 ## Marché
 
@@ -153,10 +162,11 @@ _Marché adressable en € : renseigner `market.annual_price_by_size_order` dans
 | Agriculture, sylviculture et pêche (A) | 260 | 27,0 |
 | Activités extra-territoriales (U) | 154 | 7,5 |
 
-### Appels d'offres publics QHSE / RSE (BOAMP, 6 sur la période)
+### Appels d'offres publics QHSE / RSE (BOAMP, 7 sur la période)
 
 | Date | Objet | Acheteur | Nature | Titulaire(s) |
 |---|---|---|---|---|
+| 13/10/2026 | [Réalisation du bilan d'émissions de Gaz à Effet de Serre et élaboration du Plan de Transit](https://www.boamp.fr/pages/avis/?q=idweb:26-98946) | Département des Hautes-Alpes | Résultat de marché | — |
 | 11/10/2026 | [Assistance à maîtrise d’ouvrage pour apporter une expertise réglementaire et technique afi](https://www.boamp.fr/pages/avis/?q=idweb:26-98044) | VILLE de PARIS - DFA - SDA | Avis de marché | — |
 | 08/10/2026 | [Formations relatives à l’obtention du Certificat d’aptitude à la conduite en sécurité (Cac](https://www.boamp.fr/pages/avis/?q=idweb:26-96626) | EPIDE | Résultat de marché | — |
 | 08/10/2026 | [Formations Conduite en sécurité pour les agents du Département des Côtes-d’Armor : Chariot](https://www.boamp.fr/pages/avis/?q=idweb:26-97253) | Département des Côtes d'Armor | Avis de marché | — |
@@ -191,7 +201,7 @@ Dernière collecte : 13/10/2026.
 | Presse | L'Info Durable | ✅ | lus 20, retenus 1, nouveaux 0 | 13/10/2026 |
 | Presse | Actu-Environnement | ✅ | lus 7, retenus 0, nouveaux 0 | 13/10/2026 |
 | Presse | Qualiblog | ✅ | lus 10, retenus 0, nouveaux 0 | 13/10/2026 |
-| Presse | L'Usine Nouvelle | ✅ | lus 42, retenus 0, nouveaux 0 | 13/10/2026 |
+| Presse | L'Usine Nouvelle | ✅ | lus 43, retenus 0, nouveaux 0 | 13/10/2026 |
 | Presse | Maddyness | ✅ | lus 10, retenus 0, nouveaux 0 | 13/10/2026 |
 | Presse | FrenchWeb | ✅ | lus 100, retenus 4, nouveaux 0 | 13/10/2026 |
 | Presse | CNIL | ✅ | lus 10, retenus 0, nouveaux 0 | 13/10/2026 |
@@ -201,7 +211,9 @@ Dernière collecte : 13/10/2026.
 | Presse | Actu-Environnement (énergie) | ✅ | lus 20, retenus 1, nouveaux 0 | 13/10/2026 |
 | Presse | Blog BlueKanGo | ✅ | lus 12, retenus 4, nouveaux 0 | 13/10/2026 |
 | Presse | Blog Preventeo | ✅ | lus 10, retenus 0, nouveaux 0 | 13/10/2026 |
-| Presse | Bing News (recherches) | ✅ | requêtes 36, lus 184, retenus 48, nouveaux 0, échecs 0 | 13/10/2026 |
+| Presse | Bing News (recherches) | ✅ | requêtes 42, lus 198, retenus 50, nouveaux 3, échecs 0 | 13/10/2026 |
+| Presse | Blog Utopies | ✅ | lus 0, retenus 0, nouveaux 0 | 13/10/2026 |
+| Presse | Blog Agence Déclic | ✅ | lus 10, retenus 1, nouveaux 1 | 13/10/2026 |
 | Concurrents | Red-on-line (https://www.red-on-line.com) | ✅ | inchangée | 13/10/2026 |
 | Concurrents | Preventeo (https://www.preventeo.com) | ✅ | inchangée | 13/10/2026 |
 | Concurrents | Tennaxia (https://www.tennaxia.com) | ❌ | accès refusé aux robots (403) : suivi manuel | 13/10/2026 |
@@ -220,8 +232,19 @@ Dernière collecte : 13/10/2026.
 | Concurrents | BODACC Qontinua | ✅ | annonces 0, nouvelles 0 | 13/10/2026 |
 | Concurrents | BODACC Sweep | ✅ | annonces 0, nouvelles 0 | 13/10/2026 |
 | Concurrents | BODACC EcoVadis | ✅ | annonces 3, nouvelles 0 | 13/10/2026 |
+| Concurrents | ZEI (https://zei-world.com) | ✅ | référence enregistrée | 13/10/2026 |
+| Concurrents | ORKI (https://orki.green) | ✅ | référence enregistrée | 13/10/2026 |
+| Concurrents | Goodwill Management (https://goodwill-management.com) | ✅ | référence enregistrée | 13/10/2026 |
+| Concurrents | Utopies (https://utopies.com) | ✅ | référence enregistrée | 13/10/2026 |
+| Concurrents | Agence Déclic (https://www.agence-declic.fr) | ✅ | référence enregistrée | 13/10/2026 |
+| Concurrents | BODACC ZEI | ✅ | annonces 1, nouvelles 1 | 13/10/2026 |
+| Concurrents | BODACC ORKI | ✅ | annonces 1, nouvelles 1 | 13/10/2026 |
+| Concurrents | BODACC Goodwill Management | ✅ | annonces 1, nouvelles 1 | 13/10/2026 |
+| Concurrents | BODACC Ecolearn | ✅ | annonces 1, nouvelles 1 | 13/10/2026 |
+| Concurrents | BODACC Utopies | ✅ | annonces 0, nouvelles 0 | 13/10/2026 |
+| Concurrents | BODACC Agence Déclic | ✅ | annonces 2, nouvelles 2 | 13/10/2026 |
 | Marché | Assurance Maladie (taille du marché) | ✅ | annee 2024, secteurs 22 | 13/10/2026 |
-| Marché | BOAMP (appels d'offres) | ✅ | avis 93, nouveaux 0 | 13/10/2026 |
+| Marché | BOAMP (appels d'offres) | ✅ | avis 94, nouveaux 1 | 13/10/2026 |
 | Marché | France Travail (offres d'emploi) | ⏸ | non configuré (FT_CLIENT_ID / FT_CLIENT_SECRET absents) | 13/10/2026 |
 | AT/MP | Assurance Maladie (sinistralité) | ✅ | annee 2024, lignes 88 | 13/10/2026 |
 | Réglementation | EUR-Lex | ✅ | actes 10, nouveaux 0 | 13/10/2026 |

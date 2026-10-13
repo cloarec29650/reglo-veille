@@ -33,6 +33,8 @@ press:
     - { name: FrenchWeb, url: "https://www.frenchweb.fr/feed", type: presse }
     - { name: "Blog BlueKanGo", url: "https://www.bluekango.com/feed/", type: concurrent }
     - { name: "Blog Preventeo", url: "https://www.preventeo.com/fr/feed/", type: concurrent }
+    - { name: "Blog Utopies", url: "https://utopies.com/feed/", type: concurrent }
+    - { name: "Blog Agence Déclic", url: "https://www.agence-declic.fr/feed/rss/", type: concurrent }
 
   # Recherches d'actualité Bing News (flux RSS public, autorisé par robots.txt).
   # Requêtes métier précises : c'est ici qu'on « creuse ». Les concurrents sont ajoutés automatiquement.
@@ -128,16 +130,24 @@ themes:
 # siren : annonces légales BODACC (comptes, modifications, cessions, radiations). À vérifier.
 # ambiguous : nom courant (homonymes) → mention retenue seulement avec un thème métier, et recherche précisée (search).
 competitors:
-  - { name: Red-on-line, category: "Veille réglementaire HSE", urls: ["https://www.red-on-line.com"], aliases: ["red-on-line", "red on line"], siren: "425043064" }
-  - { name: Preventeo, category: "Veille réglementaire HSE", urls: ["https://www.preventeo.com"], aliases: [preventeo], siren: "478822653" }
-  - { name: Tennaxia, category: "Logiciel HSE / RSE", urls: ["https://www.tennaxia.com"], aliases: [tennaxia], siren: "435305636" }
-  - { name: BlueKanGo, category: "Logiciel QHSE", urls: ["https://www.bluekango.com"], aliases: [bluekango], siren: "420710097" }
-  - { name: Ennov, category: "Logiciel qualité", urls: ["https://www.ennov.com"], aliases: [ennov], siren: "428692701" }
-  - { name: Qualios, category: "Logiciel qualité", urls: ["https://www.qualios.com"], aliases: [qualios], siren: "451953319" }
-  - { name: Qontinua, category: "Logiciel QHSE / RSE", urls: [], aliases: [qontinua], siren: "931554729" }
-  - { name: Greenly, category: "Plateforme carbone", urls: ["https://www.greenly.earth"], aliases: [greenly], ambiguous: true, search: 'Greenly carbone OR ACV OR climat' }
-  - { name: Sweep, category: "Plateforme ESG / carbone", urls: ["https://www.sweep.net"], aliases: ["sweep"], siren: "883967879", ambiguous: true, search: 'Sweep carbone OR ESG OR CSRD' }
+  # ── Concurrents identifiés par l'équipe (dossier « Le projet », état des lieux de la concurrence) ──
+  - { name: ZEI, category: "Plateforme RSE / impact", urls: ["https://zei-world.com"], aliases: ["zei"], siren: "814080552", ambiguous: true, search: 'ZEI RSE OR impact OR plateforme' }
+  - { name: ORKI, category: "Logiciel ESG / RSE", urls: ["https://orki.green"], aliases: ["orki"], siren: "949104533", ambiguous: true, search: 'ORKI ESG OR RSE OR logiciel' }
+  - { name: Goodwill Management, category: "Conseil RSE / baromètres", urls: ["https://goodwill-management.com"], aliases: ["goodwill management", "goodwill-management"], siren: "450482641" }
+  - { name: Ecolearn, category: "Formation RSE certifiante", urls: [], aliases: ["ecolearn"], siren: "880916986", ambiguous: true, search: 'Ecolearn formation RSE' }
   - { name: EcoVadis, category: "Notation RSE", urls: ["https://ecovadis.com"], aliases: [ecovadis], siren: "497842914" }
+  - { name: Utopies, category: "Conseil RSE / stratégie durable", urls: ["https://utopies.com"], aliases: ["utopies"], siren: "393608518", ambiguous: true, search: 'Utopies RSE OR "développement durable" agence' }
+  - { name: Agence Déclic, category: "Conseil RSE", urls: ["https://www.agence-declic.fr"], aliases: ["agence declic", "agence déclic"], siren: "808200224" }
+  # ── Ajouts data, à valider en équipe : éditeurs QHSE / veille réglementaire / carbone ──
+  - { name: Red-on-line, category: "Veille réglementaire HSE (ajout data)", urls: ["https://www.red-on-line.com"], aliases: ["red-on-line", "red on line"], siren: "425043064" }
+  - { name: Preventeo, category: "Veille réglementaire HSE (ajout data)", urls: ["https://www.preventeo.com"], aliases: [preventeo], siren: "478822653" }
+  - { name: Tennaxia, category: "Logiciel HSE / RSE (ajout data)", urls: ["https://www.tennaxia.com"], aliases: [tennaxia], siren: "435305636" }
+  - { name: BlueKanGo, category: "Logiciel QHSE (ajout data)", urls: ["https://www.bluekango.com"], aliases: [bluekango], siren: "420710097" }
+  - { name: Ennov, category: "Logiciel qualité (ajout data)", urls: ["https://www.ennov.com"], aliases: [ennov], siren: "428692701" }
+  - { name: Qualios, category: "Logiciel qualité (ajout data)", urls: ["https://www.qualios.com"], aliases: [qualios], siren: "451953319" }
+  - { name: Qontinua, category: "Logiciel QHSE / RSE (ajout data)", urls: [], aliases: [qontinua], siren: "931554729" }
+  - { name: Greenly, category: "Plateforme carbone (ajout data)", urls: ["https://www.greenly.earth"], aliases: [greenly], ambiguous: true, search: 'Greenly carbone OR ACV OR climat' }
+  - { name: Sweep, category: "Plateforme ESG / carbone (ajout data)", urls: ["https://www.sweep.net"], aliases: ["sweep"], siren: "883967879", ambiguous: true, search: 'Sweep carbone OR ESG OR CSRD' }
 
 companies:
   bodacc_url: "https://bodacc-datadila.opendatasoft.com/api/explore/v2.1/catalog/datasets/annonces-commerciales/records"
