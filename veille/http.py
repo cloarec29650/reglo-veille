@@ -52,13 +52,13 @@ class PoliteSession:
     def allowed(self, url: str) -> bool:
         return self._robots_for(url).can_fetch(self.user_agent, url)
 
-    def _throttled_get(self, url: str, **kwargs) -> requests.Response:
+    def _throttled_get(self, url: str, timeout: float | None = None, **kwargs) -> requests.Response:
         domain = urlsplit(url).netloc
         wait = self.min_delay_s - (time.monotonic() - self._last_call.get(domain, 0.0))
         if wait > 0:
             time.sleep(wait)
         try:
-            return self.session.get(url, timeout=self.timeout_s, **kwargs)
+            return self.session.get(url, timeout=timeout or self.timeout_s, **kwargs)
         finally:
             self._last_call[domain] = time.monotonic()
 

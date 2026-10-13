@@ -1,10 +1,10 @@
-# Collecte hebdomadaire : met à jour data/veille.sqlite et reports/ dans le dépôt.
+# Collecte quotidienne : met à jour data/veille.sqlite et reports/ dans le dépôt.
 # Streamlit Community Cloud redéploie l'app à chaque commit : le dashboard en ligne suit automatiquement.
-name: Veille hebdomadaire
+name: Veille quotidienne
 
 on:
   schedule:
-    - cron: "0 6 * * 1"     # chaque lundi à 6 h UTC (8 h à Paris en été, 7 h en hiver)
+    - cron: "0 5 * * *"     # chaque jour à 5 h UTC (7 h à Paris en été, 6 h en hiver)
   workflow_dispatch: {}      # lancement manuel depuis l'onglet Actions
 
 permissions:
@@ -17,7 +17,7 @@ concurrency:
 jobs:
   collecte:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
 

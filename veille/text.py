@@ -31,6 +31,16 @@ def truncate(value: str, max_chars: int) -> str:
     return cut.rstrip(",;:.") + "…"
 
 
+_EN_WORDS = {"the", "and", "of", "to", "for", "with", "your", "how", "what", "is", "are", "in", "on", "why", "from", "actually"}
+_FR_WORDS = {"le", "la", "les", "des", "du", "de", "et", "un", "une", "pour", "dans", "sur", "est", "au", "aux", "avec"}
+
+
+def looks_english(text: str) -> bool:
+    """Heuristique légère : plus de mots-outils anglais que français dans le texte."""
+    words = re.findall(r"[a-z']+", normalize(text))
+    return sum(w in _EN_WORDS for w in words) > sum(w in _FR_WORDS for w in words)
+
+
 def title_key(title: str) -> str:
     """Clé de déduplication : le même titre repris par deux sources ne compte qu'une fois."""
     return re.sub(r"[^a-z0-9]+", " ", normalize(title)).strip()

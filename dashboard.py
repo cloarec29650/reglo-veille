@@ -99,7 +99,7 @@ with st.sidebar:
     st.subheader("Collecte")
     if READ_ONLY:
         st.caption("Version en ligne, en lecture seule : les données sont mises à jour automatiquement "
-                   "chaque lundi par la collecte planifiée (GitHub Actions).")
+                   "chaque matin par la collecte planifiée (GitHub Actions).")
     else:
         volets = st.multiselect("Volets", ["press", "competitors", "market", "atmp"],
                                 default=["press", "competitors", "market", "atmp"],
@@ -130,6 +130,7 @@ store = Store(DB_PATH)
 arts = queries.articles(store)
 changes = queries.competitor_changes(store)
 tracked = queries.tracked_pages(store)
+events = queries.company_events(store)
 tend = queries.tenders(store)
 src = queries.sources(store)
 size_period, by_size = queries.market_by_size(store)
@@ -142,8 +143,16 @@ if since is not None:
     arts_p = arts[arts["date"] >= since] if not arts.empty else arts
     changes_p = changes[changes["detected_at"] >= since] if not changes.empty else changes
     tend_p = tend[tend["published_at"] >= since.replace(tzinfo=None)] if not tend.empty else tend
+    events_p = events[events["published_at"] >= since.replace(tzinfo=None)] if not events.empty else events
 else:
-    arts_p, changes_p, tend_p = arts, changes, tend
+    arts_p, changes_p, tend_p, events_p = arts, changes, tend, events
+
+# Trois familles d'articles : textes officiels, publications des concurrents, presse et recherches.
+official_p = arts_p[arts_p["source_type"] == "officiel"]
+blogs_p = arts_p[arts_p["source_type"] == "concurrent"]
+press_p = arts_p[~arts_p["source_type"].isin(["officiel", "concurrent"])]
+SOURCE_TYPES = {"spécialisé": "Presse spécialisée", "institutionnel": "Institution", "presse": "Presse généraliste",
+                "recherche": "Recherche d'actualité (Bing)"}
 
 # ─────────────────────────────── En-tête ───────────────────────────────
 targets_default = cfg["market"]["target_size_orders"]
@@ -156,30 +165,35 @@ def count_phrase(n: int, singular: str, plural_form: str, feminine: bool = False
 
 
 scope = f"Sur les {days} derniers jours" if days else "Sur tout l'historique"
-counts = [count_phrase(len(arts_p), "article retenu", "articles retenus"),
+counts = [count_phrase(len(press_p), "article retenu", "articles retenus"),
+          count_phrase(len(official_p), "texte européen", "textes européens"),
           count_phrase(len(tend_p), "appel d'offres", "appels d'offres"),
-          count_phrase(len(changes_p), "changement", "changements") + " chez les concurrents"]
-summary = f"{scope} : {counts[0]}, {counts[1]} et {counts[2]}."
+          count_phrase(len(events_p) + len(changes_p) + len(blogs_p), "signal concurrent", "signaux concurrents")]
+summary = f"{scope} : {counts[0]}, {counts[1]}, {counts[2]} et {counts[3]}."
 collected = f"{last_run[8:10]}/{last_run[5:7]}/{last_run[:4]}" if last_run else "jamais"
 st.markdown(f'''<div class="masthead"><h1>Veille marché QHSE et RSE</h1><p>{summary}</p>
 <p class="meta">Dernière collecte le {collected}. Données publiques datées ; l'interprétation revient à l'équipe.</p></div>''',
             unsafe_allow_html=True)
 
-tab_press, tab_comp, tab_market, tab_atmp, tab_tenders, tab_src = st.tabs(
-    ["Presse", "Concurrents", "Marché et segmentation", "Sinistralité AT/MP", "Appels d'offres", "Sources"])
+tab_press, tab_reg, tab_comp, tab_market, tab_atmp, tab_tenders, tab_src = st.tabs(
+    ["Presse", "Réglementation", "Concurrents", "Marché et segmentation", "Sinistralité AT/MP", "Appels d'offres", "Sources"])
 
 # ─────────────────────────────── Presse ───────────────────────────────
 with tab_press:
-    if arts_p.empty:
+    if press_p.empty:
         st.info("Aucun article retenu sur la période.")
     else:
-        f1, f2, f3 = st.columns([2, 2, 3])
+        f1, f2, f3, f4 = st.columns([2, 2, 2, 3])
         theme_sel = f1.multiselect("Thèmes", list(labels), format_func=labels.get, placeholder="Tous les thèmes")
-        source_sel = f2.multiselect("Sources", sorted(arts_p["source"].unique()), placeholder="Toutes les sources")
-        search = f3.text_input("Recherche", placeholder="mot dans le titre ou l'extrait")
-        view = arts_p
+        type_sel = f2.multiselect("Type de source", [t for t in SOURCE_TYPES if t in set(press_p["source_type"])],
+                                  format_func=SOURCE_TYPES.get, placeholder="Tous les types")
+        source_sel = f3.multiselect("Médias", sorted(press_p["source"].unique()), placeholder="Tous les médias")
+        search = f4.text_input("Recherche", placeholder="mot dans le titre ou l'extrait")
+        view = press_p
         if theme_sel:
             view = view[view["themes"].map(lambda t: any(x in t for x in theme_sel))]
+        if type_sel:
+            view = view[view["source_type"].isin(type_sel)]
         if source_sel:
             view = view[view["source"].isin(source_sel)]
         if search:
@@ -217,8 +231,52 @@ with tab_press:
                     "url": st.column_config.LinkColumn("Lien", display_text="ouvrir"),
                 })
 
+# ─────────────────────────────── Réglementation ───────────────────────────────
+with tab_reg:
+    st.subheader(f"Actes et propositions européens ({len(official_p)})")
+    st.caption("EUR-Lex : règlements, directives, décisions et propositions dont le titre touche les sujets suivis "
+               "(durabilité, santé-sécurité, substances, ESRS, CSRD, devoir de vigilance…). Liste dans config.yaml.")
+    if official_p.empty:
+        st.info("Aucun texte sur la période. Élargissez la période dans la barre latérale.")
+    else:
+        st.dataframe(
+            official_p.assign(jour=official_p["date"].dt.strftime("%Y-%m-%d"),
+                              type=official_p["source"].str.removeprefix("EUR-Lex (").str.rstrip(")"))
+            [["jour", "type", "title", "url"]],
+            hide_index=True, use_container_width=True,
+            column_config={"jour": "Date", "type": "Type",
+                           "title": st.column_config.TextColumn("Acte", width="large"),
+                           "url": st.column_config.LinkColumn("EUR-Lex", display_text="ouvrir")})
+
 # ─────────────────────────────── Concurrents ───────────────────────────────
 with tab_comp:
+    st.subheader(f"Annonces légales (BODACC, {len(events_p)})")
+    st.caption("Dépôts des comptes, modifications (dirigeants, capital, siège), cessions, procédures et radiations, "
+               "par SIREN des concurrents.")
+    if events_p.empty:
+        st.info("Aucune annonce sur la période.")
+    else:
+        st.dataframe(
+            events_p.assign(jour=events_p["published_at"].dt.strftime("%Y-%m-%d"))
+            [["jour", "competitor", "family", "detail", "url"]],
+            hide_index=True, use_container_width=True,
+            column_config={"jour": "Date", "competitor": "Concurrent", "family": "Annonce",
+                           "detail": st.column_config.TextColumn("Détail", width="large"),
+                           "url": st.column_config.LinkColumn("BODACC", display_text="ouvrir")})
+
+    st.subheader(f"Publications des concurrents ({len(blogs_p)})")
+    if blogs_p.empty:
+        st.info("Aucune publication sur la période.")
+    else:
+        st.dataframe(
+            blogs_p.assign(jour=blogs_p["date"].dt.strftime("%Y-%m-%d"),
+                           concurrent=blogs_p["source"].str.removeprefix("Blog "))
+            [["jour", "concurrent", "title", "url"]],
+            hide_index=True, use_container_width=True,
+            column_config={"jour": "Date", "concurrent": "Concurrent",
+                           "title": st.column_config.TextColumn("Titre", width="large"),
+                           "url": st.column_config.LinkColumn("Lien", display_text="ouvrir")})
+
     st.subheader("Changements détectés sur les pages suivies")
     if changes_p.empty:
         st.info("Aucun changement sur la période. Les pages sont comparées d'une collecte à l'autre : "

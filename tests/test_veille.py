@@ -43,19 +43,33 @@ def test_title_key_deduplique_les_variantes():
 def test_article_qhse_retenu_avec_theme_principal():
     c = classify("Accident du travail : le DUERP devient central pour la prévention des risques", THEMES, COMPETITORS)
     assert c.relevant
-    assert c.themes[0] == "securite_travail"
+    assert c.themes[0] == "sst_prevention"
 
 
 def test_mot_cle_entier_uniquement():
     # « hse » ne doit pas être trouvé dans « qhse », ni « rse » dans « course ».
     c = classify("Une course de QHSE", THEMES, COMPETITORS)
-    assert "qualite_iso" in c.themes
-    assert "rse_labels" not in c.themes
+    assert "normes_certification" in c.themes
+    assert "contexte" not in c.themes
 
 
 def test_theme_non_coeur_seul_non_retenu():
-    c = classify("Une levée de fonds pour un logiciel SaaS", THEMES, COMPETITORS)
+    c = classify("Une startup SaaS pour les PME", THEMES, COMPETITORS)
     assert not c.relevant
+
+
+def test_score_minimal_ecarte_les_mentions_isolees():
+    # Un seul mot-clé coeur (2 points) : retenu sans seuil, écarté avec un seuil de 4.
+    assert classify("Une certification obtenue", THEMES, COMPETITORS).relevant
+    assert not classify("Une certification obtenue", THEMES, COMPETITORS, min_score=4).relevant
+    assert classify("Certification ISO 45001 et DUERP à jour", THEMES, COMPETITORS, min_score=4).relevant
+
+
+def test_concurrent_homonyme_exige_un_theme_metier():
+    # « Sweep » est aussi un nom de vélo : sans thème métier, la mention est ignorée.
+    assert classify("Test Scott Sweep : trois vélos électriques", THEMES, COMPETITORS).competitors == []
+    c = classify("Sweep accompagne les PME dans leur reporting CSRD", THEMES, COMPETITORS)
+    assert c.competitors == ["Sweep"]
 
 
 def test_concurrent_cite_rend_l_article_pertinent():
@@ -210,3 +224,50 @@ def test_requetes_dashboard(store):
 
     year, sectors, national = queries.atmp(store)
     assert list(sectors["naf"]) == ["F"] and national["indice_frequence_at"] == 26.4
+
+
+# ── Sources approfondies ──
+from datetime import datetime, timezone
+
+from veille.collectors.companies import event_detail
+from veille.collectors.press import bing_queries, resolve_link, too_old
+from veille.collectors.regulation import build_query, celex_kind
+from veille.text import looks_english
+
+
+def test_lien_bing_resolu_vers_l_article():
+    link = ("http://www.bing.com/news/apiclick.aspx?ref=FexRss&aid=&tid=abc"
+            "&url=https%3a%2f%2fcdurable.info%2fvsme-pme%2f&c=123")
+    assert resolve_link(link) == "https://cdurable.info/vsme-pme/"
+    assert resolve_link("https://ex.test/a") == "https://ex.test/a"
+
+
+def test_detection_anglais():
+    assert looks_english("ISO 45001 Certification: Your Key to a Safe Workplace and the Future")
+    assert not looks_english("Certification ISO 45001 : l'intérêt d'un audit à blanc pour les PME")
+
+
+def test_filtre_anciennete():
+    now = datetime(2026, 10, 13, tzinfo=timezone.utc)
+    assert too_old({"published_at": "2025-01-01T00:00:00+00:00"}, 120, now)
+    assert not too_old({"published_at": "2026-09-01T00:00:00+00:00"}, 120, now)
+    assert not too_old({"published_at": None}, 120, now)
+
+
+def test_requetes_bing_incluent_les_concurrents():
+    queries = bing_queries(CFG)
+    assert ('"Preventeo"', True) in queries
+    assert any(not is_comp for _, is_comp in queries)
+
+
+def test_requete_eurlex():
+    q = build_query(["durabilité", "2023/2772"], date(2026, 6, 1), ["rectificatif"])
+    assert '"2026-06-01"^^xsd:date' in q
+    assert "(durabilité)|(2023/2772)" in q
+    assert 'FILTER(!REGEX(?title, "(rectificatif)", "i"))' in q
+    assert celex_kind("32026R2241") == "Règlement" and celex_kind("52026PC0985") == "Proposition"
+
+
+def test_detail_annonce_bodacc():
+    record = {"depot": '{"dateCloture": "2025-12-31", "typeDepot": "Comptes annuels et rapports"}', "jugement": None}
+    assert event_detail(record) == "2025-12-31 ; Comptes annuels et rapports"

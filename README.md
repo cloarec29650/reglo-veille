@@ -8,8 +8,9 @@ Sans IA générative : classement par mots-clés, données ouvertes officielles.
 
 | Volet | Sources | Ce que ça alimente |
 |---|---|---|
-| Presse & tendances | Flux RSS : Novethic, L'Info Durable, Actu-Environnement, Qualiblog, L'Usine Nouvelle, Maddyness, FrenchWeb, CNIL | Veille stratégique, environnement externe (PESTEL) |
-| Concurrents | Pages publiques des concurrents (`config.yaml`) : détection des changements, alerte si un prix bouge | Mapping concurrentiel, positionnement |
+| Presse & tendances | ~22 recherches métier Bing News (DUERP, faute inexcusable, VSME, ICPE, logiciel QHSE…) + flux spécialisés (ANACT, Actu-Environnement, Qualiblog…) et généralistes | Veille stratégique, environnement externe (PESTEL) |
+| Réglementation | EUR-Lex (SPARQL Cellar) : actes et propositions UE sur la durabilité, la santé-sécurité, REACH, ESRS, CSRD, CS3D | Veille réglementaire, argumentaire produit |
+| Concurrents | Pages publiques (changements, alerte prix), blogs, mentions dans la presse, annonces légales BODACC par SIREN | Mapping concurrentiel, positionnement |
 | Indicateurs marché | Assurance Maladie (entreprises par taille et secteur), BOAMP (appels d'offres), France Travail (offres d'emploi, optionnel) | Étude de marché, taille du marché, segmentation |
 | Sinistralité AT/MP | Assurance Maladie (accidents du travail, maladies professionnelles par secteur) | Segmentation, priorisation des secteurs, argumentaire |
 
@@ -69,9 +70,9 @@ concurrentes, qui n'ont pas à être publics.
    *Advanced settings* → Python **3.11**.
 3. **Partage** : dans les réglages de l'app, *Sharing* → laisser l'app privée et inviter l'email de chaque
    personne. Elle se connecte avec Google ou par un lien reçu par email.
-4. **Collecte automatique** : le workflow `.github/workflows/veille.yml` collecte chaque lundi, enregistre
+4. **Collecte automatique** : le workflow `.github/workflows/veille.yml` collecte chaque jour, enregistre
    la base et le digest dans le dépôt ; Streamlit redéploie l'app à chaque commit. Lancement manuel :
-   onglet *Actions* → *Veille hebdomadaire* → *Run workflow*.
+   onglet *Actions* → *Veille quotidienne* → *Run workflow*.
 
 En ligne, le dashboard est en **lecture seule** (pas de bouton de collecte) : le disque de Streamlit Cloud
 est temporaire et les visiteurs ne doivent pas déclencher de collecte.
@@ -102,7 +103,7 @@ Tout ce qui relève de **l'analyse** est un choix de l'équipe, à justifier :
 
 ## Automatiser
 
-**Windows (local)** : Planificateur de tâches → Créer une tâche de base → Hebdomadaire (ex. lundi 8 h) →
+**Windows (local)** : Planificateur de tâches → Créer une tâche de base → Quotidienne (ex. 8 h) →
 Démarrer un programme → `run_veille.bat`. Journal : `data\veille.log`.
 
 **VPS (plus tard)** : même commande via `cron`, par exemple `0 8 * * 1 cd /opt/veille && .venv/bin/python -m veille run`.

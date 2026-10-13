@@ -1,48 +1,103 @@
 # Veille marché, semaine 42 de 2026
 
-Du 6 au 13 octobre 2026 : 8 articles retenus, 4 appels d'offres et aucun changement chez les concurrents.
+Du 6 au 13 octobre 2026 : 24 articles retenus, 6 appels d'offres et aucun changement chez les concurrents.
 
 ## À retenir
 
-- **[SIAL For Change 2026 : les rendez-vous à ne pas manquer pour comprendre la transition agroalimentaire](https://www.linfodurable.fr/entreprises/sial-change-2026-les-rendez-vous-ne-pas-manquer-59270)**  
-  L'Info Durable, 09/10/2026. _RSE, labels & notations, Carbone & environnement, Marché, financement & acteurs._
-- **[Le Portail RSE change d'échelle pour mieux accompagner les PME vers la durabilité](https://www.novethic.fr/economie-et-social/transformation-de-leconomie/le-portail-rse-change-dechelle-pour-accompagner-les-pme-vers-la-durabilite)**  
-  Novethic, 08/10/2026. _RSE, labels & notations, Outils & digitalisation, Marché, financement & acteurs._
-- **[CARBONFARM lève 7 millions d’euros pour rendre la réduction du méthane des rizières mesurable et finançable](https://www.frenchweb.fr/carbonfarm-leve-7-millions-deuros-pour-rendre-la-reduction-du-methane-des-rizieres-mesurable-et-financable/463919)**  
-  FrenchWeb, 13/10/2026. _Carbone & environnement, Marché, financement & acteurs._
+- **[L'État demande que « 100 % » des collectivités élaborent un Document unique d'évaluation des risques professionnels d'ici deux ans](https://www.maire-info.com/fonction-publique/la-tat-demande-que-a-100-a-des-collectivita-s-a-laborent-un-document-unique-da-valuation-des-risques-professionnels-dici-deux-ans-art26-31167)**  
+  Maire info, 11/10/2026. _Santé, sécurité & prévention._
+- **[Employeur agricole, avez-vous établi votre DUERP ?](https://www.horizons-journal.fr/employeur-agricole-avez-vous-etabli-votre-duerp)**  
+  horizons-journal, 07/10/2026. _Santé, sécurité & prévention._
+- **[Tunisie : AGL, L’Epi d’Or et ACN certifiés ISO 14001 pour leur management environnemental](https://www.entreprises-magazine.com/tunisie-agl-lepi-dor-et-acn-certifies-iso-14001-pour-leur-management-environnemental/)**  
+  Entreprises Magazine, 06/10/2026. _Normes, certifications & labels, Santé, sécurité & prévention._
 - **[Directive anti-greenwashing : 7 entreprises sur 10 devront revoir les mots de la RSE](https://www.novethic.fr/economie-et-social/transformation-de-leconomie/directive-anti-greenwashing-entreprises-devoir-revoir-mots-rse)**  
-  Novethic, 09/10/2026. _RSE, labels & notations, Réglementation._
-- **[Au ministre délégué de la Transition écologique, Emmaüs répond qu'elle n'exporte pas de déchets textiles](https://www.linfodurable.fr/environnement/textiles-emmaus-repond-au-gouvernement-59303)**  
-  L'Info Durable, 09/10/2026. _Carbone & environnement._
+  Novethic, 09/10/2026. _Réglementation & conformité, Contexte (RSE, ESG, numérique)._
+
+## Réglementation européenne
+
+_Aucun nouvel acte ou proposition sur les sujets suivis pendant la période._
 
 ## Presse et tendances
 
-### Qualité, normes & certifications (1)
+### Santé, sécurité & prévention (7)
 
-- [ISO 9001:2026 : vos opportunités dorment dans un tableau ? Voici comment les faire aboutir](https://qualiblog.fr/outils-et-methodes/iso-9001-2026-saisir-opportunites-methode-exemple/), Qualiblog, 06/10/2026
-  > La nouvelle édition d’ISO 9001 distingue plus clairement le traitement des risques de celui des opportunités. Pour une...
+- [L'État demande que « 100 % » des collectivités élaborent un Document unique d'évaluation des risques professionnels d'ici deux ans](https://www.maire-info.com/fonction-publique/la-tat-demande-que-a-100-a-des-collectivita-s-a-laborent-un-document-unique-da-valuation-des-risques-professionnels-dici-deux-ans-art26-31167), Maire info (recherche d'actualité), 11/10/2026
+  > Le Plan santé au travail dans la fonction publique 2026-2030 a été rendu public en fin de semaine dernière. Parmi les mesures annoncées, l'objectif de rendre effective l'obligation, pour chaque e ...
+- [Employeur agricole, avez-vous établi votre DUERP ?](https://www.horizons-journal.fr/employeur-agricole-avez-vous-etabli-votre-duerp), horizons-journal (recherche d'actualité), 07/10/2026
+  > Vous employez au moins un salarié sur votre exploitation ? Le Document unique d’évaluation des risques professionnels (DUERP) fait partie des documents que vous devez établir.
+- [SANTÉ AU TRAVAIL : Hattab appelle à renforcer la prévention des risques professionnels](https://lecourrier-dalgerie.com/sante-au-travail-hattab-appelle-a-renforcer-la-prevention-des-risques-professionnels/), lecourrier-dalgerie (recherche d'actualité), 11/10/2026
+  > Le ministre du Travail, de l’Emploi et de la Sécurité sociale, Mohamed Hattab, appelle à donner un nouvel élan à l’activité de l’Entreprise publique économique des services de médecine du travail, en ...
+- [Il a insisté sur une prise en charge plus efficace des risques professionnels : Mohamed Hattab veut renforcer la médecine du travail](https://www.elmoudjahid.dz/fr/actualite/il-a-insiste-sur-une-prise-en-charge-plus-efficace-des-risques-professionnels-mohamed-hattab-veut-renforcer-la-medecine-du-travail-260207), El Moudjahid (recherche d'actualité), 11/10/2026
+  > Le ministre du Travail a particulièrement mis le doigt sur l’impératif de renforcer la prévention et le dépistage précoce des maladies liées à l’activité professionnelle.
+- [Les formations santé et sécurité face aux nouveaux enjeux du monde du travail](https://www.capital.fr/entreprises-marches/les-formations-sante-et-securite-face-aux-nouveaux-enjeux-du-monde-du-travail-1530676), Capital (recherche d'actualité), 09/10/2026
+  > Inflation législative, métiers en tension et contextes anxiogène. Quels sont les nouveaux risques au travail ? Capi Consult, spécialiste de la prévention des risques santé et sécurité au travail, les ...
+- [« Ce que le travail fait aux femmes » : un plaidoyer pour la reconnaissance du cancer du sein comme maladie professionnelle](https://www.lemonde.fr/vie-au-travail/article/2026/10/08/ce-que-le-travail-fait-aux-femmes-un-plaidoyer-pour-la-reconnaissance-du-cancer-du-sein-comme-maladie-professionnelle_6789928_6768900.html), Le Monde (recherche d'actualité), 07/10/2026
+  > Dans un livre de combat, un collectif d’auteurs met en évidence les liens entre le cancer du sein de salariées et leur quotidien professionnel. En cause : l’exposition aux rayonnements ionisants et à ...
+- [Cancer du sein : une députée veut faciliter sa reconnaissance comme maladie professionnelle](https://www.msn.com/fr-fr/actualite/other/cancer-du-sein-une-d%C3%A9put%C3%A9e-veut-faciliter-sa-reconnaissance-comme-maladie-professionnelle/ar-AA2dLLCr), La Chaîne parlementaire via MSN (recherche d'actualité), 07/10/2026
+  > Par Raphaël Marchal , le Mercredi 7 octobre 2026 à 20:15 "Qu'attendons-nous pour reconnaître le cancer du sein comme maladie professionnelle ?", a questionné Danielle Simonnet ce mercredi 7 octobre, a ...
 
-### RSE, labels & notations (4)
+### Réglementation & conformité (5)
 
-- [SIAL For Change 2026 : les rendez-vous à ne pas manquer pour comprendre la transition agroalimentaire](https://www.linfodurable.fr/entreprises/sial-change-2026-les-rendez-vous-ne-pas-manquer-59270), L'Info Durable, 09/10/2026
-  > SIAL For Change est l'espace RSE de SIAL Paris. Pour cette édition, il change de dimension avec un lieu repensé au cœur du salon et un partenariat européen avec The Foodies, ouvrant la compétition aux PME de toute l'Europe. Pendant cinq jours, il réunira industriels, start-up et…
-- [Le Portail RSE change d'échelle pour mieux accompagner les PME vers la durabilité](https://www.novethic.fr/economie-et-social/transformation-de-leconomie/le-portail-rse-change-dechelle-pour-accompagner-les-pme-vers-la-durabilite), Novethic, 08/10/2026
-  > Les obligations RSE pour les PME peuvent parfois virer au casse-tête. Photo-de-Ante-Hamersmit-sur-Unsplash À quelles obligations RSE votre entreprise est-elle soumise ? Pour le savoir, le Portail RSE propose un test en quelques étapes. Il suffit de renseigner son nom ou son…
-- [Directive anti-greenwashing : 7 entreprises sur 10 devront revoir les mots de la RSE](https://www.novethic.fr/economie-et-social/transformation-de-leconomie/directive-anti-greenwashing-entreprises-devoir-revoir-mots-rse), Novethic, 09/10/2026
+- [Directive anti-greenwashing : 7 entreprises sur 10 devront revoir les mots de la RSE](https://www.novethic.fr/economie-et-social/transformation-de-leconomie/directive-anti-greenwashing-entreprises-devoir-revoir-mots-rse), Novethic (presse), 09/10/2026
   > 69% des entreprises engagées dans la RSE utilisent des mots visés par la directive anti-greenwashing. @ Jason Mavrommatis sur Unsplash Les entreprises vont devoir être beaucoup plus vigilantes sur leurs allégations environnementales. La directive anti-greenwashing, entrée en…
-- [PFAS : SEB est mis en demeure pour manquement à son devoir de vigilance](https://www.novethic.fr/economie-et-social/business-model-en-transition/pfas-seb-mis-demeure-pour-manquement-devoir-vigilance), Novethic, 09/10/2026
+- [CEE : le programme Actee+ prolongé d'un an jusqu'à fin 2027](https://www.actu-environnement.com/ae/news/cee-programme-actee-prolongation-collectivites-diagnostic-ecoles-canicule-48634.php4), Actu-Environnement (énergie) (presse spécialisée), 08/10/2026
+  > Dans le cadre des certificats d'économies d'énergie (CEE), un arrêté, paru ce 8 octobre 2026 au Journal officiel, prolonge d'un an le programme Actee+. Porté par la Fédération nationale des collectivi...
+- [La façade photovoltaïque, une piste d’autoconsommation](https://www.lagazettedescommunes.com/club-techni-cites/urbanisme/batiment/la-facade-photovoltaique-une-piste-dautoconsommation.AKUN7MP7ZRKLHPSQXRDBHMUBTA.html), La Gazette des Communes (recherche d'actualité), 07/10/2026
+  > Pour répondre aux objectifs du décret Tertiaire ainsi qu’à la hausse des coûts de l’énergie, tout en tentant de s’adapter au changement climatique, les collectivités pourraient équiper leur patrimoine ...
+- [Montant net social 2027 : de nouveaux éléments à intégrer](https://www.editions-tissot.fr/actualite/droit-du-travail/montant-net-social-2027-de-nouveaux-elements-a-integrer), Editions Tissot (recherche d'actualité), 12/10/2026
+  > Un projet de décret est actuellement en cours de préparation. Mais le Bulletin officiel de la Sécurité sociale (BOSS) a toutefois déjà annoncé que de nouveaux éléments seraient pris en compte dans le ...
+- [Quelles sont les limites du pouvoir de sanction de l’employeur ?](https://www.village-justice.com/articles/quelles-sont-les-limites-pouvoir-sanction-employeur,59372.html), Village de la Justice (recherche d'actualité), 07/10/2026
+  > L’employeur exerce le pouvoir disciplinaire à l’égard des salariés, au moyen d’un éventail de sanctions ayant différents degrés de gravité : avertissement, mise à pied, mutation, rétrogradation, licen ...
+
+### CSRD, VSME & reporting durabilité (2)
+
+- [PFAS : SEB est mis en demeure pour manquement à son devoir de vigilance](https://www.novethic.fr/economie-et-social/business-model-en-transition/pfas-seb-mis-demeure-pour-manquement-devoir-vigilance), Novethic (presse), 09/10/2026
   > Seb, fabricant des poêles Tefal, est mis en demeure sur son devoir de vigilance concernant l'utilisation des PFAS, ces polluants éternels très controversés. SERGE TENANI / HANS LUCAS VIA AFP Le fabricant des poêles Tefal a trois mois pour revoir sa copie. Ce 9 octobre…
+- [Polluants éternels : le groupe Seb mis en demeure par trois associations sur son devoir de vigilance sur les PFAS](https://www.tf1info.fr/environnement-ecologie/polluants-eternels-le-groupe-seb-tefal-mis-en-demeure-par-trois-associations-sur-son-devoir-de-vigilance-sur-les-pfas-2468940.html), TF1 INFO (recherche d'actualité), 08/10/2026
+  > [VIDÉO] Trois associations ont mis en demeure l'industriel Seb pour l'obliger à appliquer sous trois mois son devoir de vigilance quant à l'utilisation de PFAS dans ses fabrications. Le groupe d'élect ...
 
-### Carbone & environnement (3)
+### Normes, certifications & labels (7)
 
-- [CARBONFARM lève 7 millions d’euros pour rendre la réduction du méthane des rizières mesurable et finançable](https://www.frenchweb.fr/carbonfarm-leve-7-millions-deuros-pour-rendre-la-reduction-du-methane-des-rizieres-mesurable-et-financable/463919), FrenchWeb, 13/10/2026
-  > La société française annonce une série A de 7 millions d’euros pour développer ses programmes de décarbonation du riz. Son approche associe suivi satellitaire, modélisation des émissions et financement climatique, avec un enjeu : déployer des pratiques économes en eau auprès de…
-- [Au ministre délégué de la Transition écologique, Emmaüs répond qu'elle n'exporte pas de déchets textiles](https://www.linfodurable.fr/environnement/textiles-emmaus-repond-au-gouvernement-59303), L'Info Durable, 09/10/2026
-  > L'association Emmaüs s'est élevée contre les propos du ministre délégué de la Transition écologique Mathieu Lefèvre, qui a déclaré fin septembre qu'"on ne pouvait soutenir des acteurs qui exportent nos déchets à l'autre bout de la planète pour les trier".
-- [Transition écologique : la Cour des comptes appelle à "mieux dépenser"](https://www.linfodurable.fr/economie/transition-ecologique-la-cour-des-comptes-appelle-mieux-depenser-59276), L'Info Durable, 08/10/2026
-  > Dans son deuxième rapport annuel sur la transition écologique, la Cour des comptes alerte sur les conséquences économiques et budgétaires d'un retard dans la lutte contre le changement climatique. Face à des résultats encore insuffisants, elle appelle l'État à mieux cibler ses…
+- [Tunisie : AGL, L’Epi d’Or et ACN certifiés ISO 14001 pour leur management environnemental](https://www.entreprises-magazine.com/tunisie-agl-lepi-dor-et-acn-certifies-iso-14001-pour-leur-management-environnemental/), Entreprises Magazine (recherche d'actualité), 06/10/2026
+  > L’Epi d’Or, Africa Global Logistics (AGL) et Aliments Composés du Nord (ACN), viennent de décrocher la certification ISO 14001, norme internationale de référence pour organiser et améliorer la gestion ...
+- [Atos intègre le top 5 % d’EcoVadis, avec un score de durabilité de 85/100](https://www.msn.com/fr-fr/actualite/other/atos-int%C3%A8gre-le-top-5-d-ecovadis-avec-un-score-de-durabilit%C3%A9-de-85100/ar-AA2dKQA0), RSE Magazine via MSN (recherche d'actualité), 07/10/2026
+  > Atos annonce avoir obtenu la médaille d’or EcoVadis avec une note globale de 85 sur 100, en progression d’un point par rapport à l’évaluation précédente, ce qui place l’entreprise parmi ...
+- [Atos : médaille d'or !](https://www.boursier.com/actions/actualites/news/atos-medaille-d-or-995402.html), Boursier.com (recherche d'actualité), 07/10/2026
+  > (Boursier.com) — Atos a reçu la médaille d'or EcoVadis pour ses performances en durabilité. Cette reconnaissance place Atos parmi les 5% les plus performantes de toutes les entreprises évaluées par Ec ...
+- [Atos reçoit la médaille d'or EcoVadis, se classant dans les 5% des meilleures entreprises évaluées dans le monde](https://fr.finance.yahoo.com/actualites/atos-re%C3%A7oit-m%C3%A9daille-dor-ecovadis-104500446.html), Yahoo Finance (recherche d'actualité), 06/10/2026
+  > Communiqué de presse Atos reçoit la médaille d'or EcoVadis, se classant dans les 5% des meilleures entreprises évaluées dans le monde Paris, France, 7 octobre 2026 - Atos, un leader mondial de la tran ...
+- [Industrie : trois entreprises tunisiennes obtiennent la certification environnementale ISO 14001](https://www.tunisienumerique.com/trois-entreprises-industrielles-tunisiennes-certification-iso-14001/), Tunisie Numérique (recherche d'actualité), 07/10/2026
+  > Lire plus tardTrois entreprises industrielles tunisiennes, actives dans l’agroalimentaire, les aliments composés pour animaux et la logistique, ont obtenu récemment la certification ISO 14001, référen ...
+- [Cap sur le vert : trois industriels décrochent le sésame ISO 14001](https://www.leconomistemaghrebin.com/2026/10/07/cap-sur-le-vert-trois-industriels-decrochent-le-sesame-iso-14001/), L'Économiste Maghrébin (recherche d'actualité), 07/10/2026
+  > Cette certification permet d'identifier et maîtriser les impacts environnementaux liés aux activités de l'entreprise, de mettre en place des objectifs ...
+- [Savannah Resources plc obtient la certification ISO 14001 pour son projet de lithium de Barroso](https://www.zonebourse.com/actualite-bourse/savannah-resources-plc-obtient-la-certification-iso-14001-pour-son-projet-de-lithium-de-barroso-ce785ddfdd8af720), Zonebourse (recherche d'actualité), 07/10/2026
+  > Savannah Resources Plc, le développeur du projet de lithium de Barroso au Portugal, annonce que le projet de lithium de Barroso ainsi que les activités et installations qui lui sont associées ...
+
+### Environnement & risques industriels (1)
+
+- [PFAS : trois associations mettent en demeure le fabricant des poêles Tefal de prendre des dispositions](https://www.cnews.fr/france/2026-10-09/pfas-trois-associations-mettent-en-demeure-le-fabricant-des-poeles-tefal-de), CNEWS (recherche d'actualité), 09/10/2026
+  > Trois associations ont annoncé ce vendredi avoir mis en demeure le groupe français Seb, fabricant des poêles et casseroles Tefal, concernant son utilisation de ...
+
+### Contexte (RSE, ESG, numérique) (1)
+
+- [SIAL For Change 2026 : les rendez-vous à ne pas manquer pour comprendre la transition agroalimentaire](https://www.linfodurable.fr/entreprises/sial-change-2026-les-rendez-vous-ne-pas-manquer-59270), L'Info Durable (presse), 09/10/2026
+  > SIAL For Change est l'espace RSE de SIAL Paris. Pour cette édition, il change de dimension avec un lieu repensé au cœur du salon et un partenariat européen avec The Foodies, ouvrant la compétition aux PME de toute l'Europe. Pendant cinq jours, il réunira industriels, start-up et…
+
+**Concurrents cités dans la presse :** EcoVadis (3)
 
 ## Concurrents
+
+### Annonces légales (BODACC)
+
+| Date | Concurrent | Annonce | Détail |
+|---|---|---|---|
+| 13/10/2026 | Red-on-line | [Dépôts des comptes](https://www.bodacc.fr/pages/annonces-commerciales-detail/?q.id=id:C2026019612253) | 2025-12-31 ; Comptes annuels et rapports |
+
+### Publications des concurrents
+
+- [Salon Expo protection 2026](https://www.bluekango.com/qui-sommes-nous/actualites/salon-expo-protection-2026/), BlueKanGo, 06/10/2026
+
+### Changements sur leurs sites
 
 _Aucun changement détecté sur les pages suivies._
 
@@ -98,14 +153,16 @@ _Marché adressable en € : renseigner `market.annual_price_by_size_order` dans
 | Agriculture, sylviculture et pêche (A) | 260 | 27,0 |
 | Activités extra-territoriales (U) | 154 | 7,5 |
 
-### Appels d'offres publics QHSE / RSE (BOAMP, 4 sur la période)
+### Appels d'offres publics QHSE / RSE (BOAMP, 6 sur la période)
 
 | Date | Objet | Acheteur | Nature | Titulaire(s) |
 |---|---|---|---|---|
-| 11/10/2026 | [Accord cadre à bons de commandes pour des missions de coordination en matière de sécurité ](https://www.boamp.fr/pages/avis/?q=idweb:26-97871) | Institut National des Sciences Appliquées de Lyon (INSA Lyon) | Avis de marché | — |
-| 09/10/2026 | [Accord-cadre relatif aux missions de coordination en faveur de la sécurité et de la protec](https://www.boamp.fr/pages/avis/?q=idweb:26-97398) | LIMOGES METROPOLE - Communauté urbaine | Résultat de marché | DEKRA INDUSTRIAL |
+| 11/10/2026 | [Assistance à maîtrise d’ouvrage pour apporter une expertise réglementaire et technique afi](https://www.boamp.fr/pages/avis/?q=idweb:26-98044) | VILLE de PARIS - DFA - SDA | Avis de marché | — |
+| 08/10/2026 | [Formations relatives à l’obtention du Certificat d’aptitude à la conduite en sécurité (Cac](https://www.boamp.fr/pages/avis/?q=idweb:26-96626) | EPIDE | Résultat de marché | — |
+| 08/10/2026 | [Formations Conduite en sécurité pour les agents du Département des Côtes-d’Armor : Chariot](https://www.boamp.fr/pages/avis/?q=idweb:26-97253) | Département des Côtes d'Armor | Avis de marché | — |
+| 08/10/2026 | [Vérifications périodiques réglementaires des installations électriques, gaz, ascenseurs, S](https://www.boamp.fr/pages/avis/?q=idweb:26-96558) | Commune de Saint-Dizier | Avis de marché | — |
 | 08/10/2026 | [Realisation D'Actions De Formation Sur Le Theme Sante, Securite Et Conditions De Travail P](https://www.boamp.fr/pages/avis/?q=idweb:26-97331) | Cnfpt - Délégation Ile de France | Avis de marché | — |
-| 06/10/2026 | [Fourniture d'équipements de protection individuelle, de vêtements et de chaussures de trav](https://www.boamp.fr/pages/avis/?q=idweb:26-95779) | CA Ventoux Comtat Venaissin | Avis de marché | — |
+| 07/10/2026 | [Prestations de prévention et de gestion des risques psychosociaux pour les besoins de la C](https://www.boamp.fr/pages/avis/?q=idweb:26-96868) | FILIERIS | Résultat de marché | PERFORMANCE SOCIALE ORGANISATION |
 
 ## Sinistralité AT/MP
 
@@ -130,14 +187,21 @@ Dernière collecte : 13/10/2026.
 
 | Volet | Source | État | Détail | Relevé le |
 |---|---|---|---|---|
-| Presse | Novethic | ✅ | lus 10, retenus 3, nouveaux 0 | 13/10/2026 |
-| Presse | L'Info Durable | ✅ | lus 20, retenus 3, nouveaux 0 | 13/10/2026 |
+| Presse | Novethic | ✅ | lus 10, retenus 2, nouveaux 2 | 13/10/2026 |
+| Presse | L'Info Durable | ✅ | lus 20, retenus 1, nouveaux 1 | 13/10/2026 |
 | Presse | Actu-Environnement | ✅ | lus 7, retenus 0, nouveaux 0 | 13/10/2026 |
-| Presse | Qualiblog | ✅ | lus 10, retenus 6, nouveaux 0 | 13/10/2026 |
+| Presse | Qualiblog | ✅ | lus 10, retenus 0, nouveaux 0 | 13/10/2026 |
 | Presse | L'Usine Nouvelle | ✅ | lus 41, retenus 0, nouveaux 0 | 13/10/2026 |
 | Presse | Maddyness | ✅ | lus 10, retenus 0, nouveaux 0 | 13/10/2026 |
-| Presse | FrenchWeb | ✅ | lus 100, retenus 1, nouveaux 1 | 13/10/2026 |
+| Presse | FrenchWeb | ✅ | lus 100, retenus 4, nouveaux 4 | 13/10/2026 |
 | Presse | CNIL | ✅ | lus 10, retenus 0, nouveaux 0 | 13/10/2026 |
+| Presse | ANACT | ✅ | lus 60, retenus 2, nouveaux 2 | 13/10/2026 |
+| Presse | Actu-Environnement (risques) | ✅ | lus 20, retenus 0, nouveaux 0 | 13/10/2026 |
+| Presse | Actu-Environnement (déchets) | ✅ | lus 20, retenus 1, nouveaux 1 | 13/10/2026 |
+| Presse | Actu-Environnement (énergie) | ✅ | lus 20, retenus 1, nouveaux 1 | 13/10/2026 |
+| Presse | Blog BlueKanGo | ✅ | lus 12, retenus 4, nouveaux 4 | 13/10/2026 |
+| Presse | Blog Preventeo | ✅ | lus 10, retenus 0, nouveaux 0 | 13/10/2026 |
+| Presse | Bing News (recherches) | ✅ | requêtes 36, lus 184, retenus 48, nouveaux 47, échecs 0 | 13/10/2026 |
 | Concurrents | Red-on-line (https://www.red-on-line.com) | ✅ | inchangée | 13/10/2026 |
 | Concurrents | Preventeo (https://www.preventeo.com) | ✅ | inchangée | 13/10/2026 |
 | Concurrents | Tennaxia (https://www.tennaxia.com) | ❌ | accès refusé aux robots (403) : suivi manuel | 13/10/2026 |
@@ -147,13 +211,25 @@ Dernière collecte : 13/10/2026.
 | Concurrents | Greenly (https://www.greenly.earth) | ❌ | accès refusé aux robots (403) : suivi manuel | 13/10/2026 |
 | Concurrents | Sweep (https://www.sweep.net) | ✅ | inchangée | 13/10/2026 |
 | Concurrents | EcoVadis (https://ecovadis.com) | ✅ | inchangée | 13/10/2026 |
+| Concurrents | BODACC Red-on-line | ✅ | annonces 1, nouvelles 0 | 13/10/2026 |
+| Concurrents | BODACC Preventeo | ✅ | annonces 3, nouvelles 0 | 13/10/2026 |
+| Concurrents | BODACC Tennaxia | ✅ | annonces 0, nouvelles 0 | 13/10/2026 |
+| Concurrents | BODACC BlueKanGo | ✅ | annonces 2, nouvelles 0 | 13/10/2026 |
+| Concurrents | BODACC Ennov | ✅ | annonces 3, nouvelles 0 | 13/10/2026 |
+| Concurrents | BODACC Qualios | ✅ | annonces 1, nouvelles 0 | 13/10/2026 |
+| Concurrents | BODACC Qontinua | ✅ | annonces 0, nouvelles 0 | 13/10/2026 |
+| Concurrents | BODACC Sweep | ✅ | annonces 0, nouvelles 0 | 13/10/2026 |
+| Concurrents | BODACC EcoVadis | ✅ | annonces 3, nouvelles 0 | 13/10/2026 |
 | Marché | Assurance Maladie (taille du marché) | ✅ | annee 2024, secteurs 22 | 13/10/2026 |
-| Marché | BOAMP (appels d'offres) | ✅ | avis 4, nouveaux 0 | 13/10/2026 |
+| Marché | BOAMP (appels d'offres) | ✅ | avis 93, nouveaux 93 | 13/10/2026 |
 | Marché | France Travail (offres d'emploi) | ⏸ | non configuré (FT_CLIENT_ID / FT_CLIENT_SECRET absents) | 13/10/2026 |
 | AT/MP | Assurance Maladie (sinistralité) | ✅ | annee 2024, lignes 88 | 13/10/2026 |
+| Réglementation | EUR-Lex | ✅ | actes 10, nouveaux 10 | 13/10/2026 |
 
-- **Presse** : flux RSS publics, robots.txt respecté ; seuls le titre, le lien et un court extrait sont conservés (droit voisin de la presse).
-- **Classement** : mots-clés par thème (`config.yaml`), sans IA générative ; un article est retenu s'il touche un thème « coeur » ou cite un concurrent.
+- **Presse** : flux RSS spécialisés et recherches d'actualité Bing News, robots.txt respecté ; seuls le titre, le lien et un court extrait sont conservés (droit voisin de la presse).
+- **Réglementation** : actes et propositions publiés sur EUR-Lex (point d'accès SPARQL de l'Office des publications), filtrés par sujets et textes de référence.
+- **Annonces légales** : BODACC (DILA), par numéro SIREN des concurrents.
+- **Classement** : mots-clés par thème (`config.yaml`), sans IA générative ; un article est retenu s'il touche un thème « coeur » (ou cite un concurrent) et atteint un score minimal ; les articles en anglais et trop anciens sont écartés.
 - **Concurrents** : comparaison du texte visible des pages publiques entre deux collectes.
 - **Marché & AT/MP** : open data Assurance Maladie (data.ameli.fr), régime général ; BOAMP (DILA) ; France Travail si configuré.
 - **Limites** : le régime général exclut le régime agricole (MSA), d'où le faible poids du secteur A ; la somme des secteurs peut différer légèrement du total national (secteurs non renseignés, secret statistique).

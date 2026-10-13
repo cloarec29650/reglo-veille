@@ -54,6 +54,16 @@ CREATE TABLE IF NOT EXISTS tenders (
     url          TEXT,
     first_seen_at TEXT NOT NULL
 );
+CREATE TABLE IF NOT EXISTS company_events (
+    id          TEXT PRIMARY KEY,        -- identifiant BODACC
+    competitor  TEXT NOT NULL,
+    siren       TEXT NOT NULL,
+    published_at TEXT NOT NULL,
+    family      TEXT,                    -- ex. « Dépôts des comptes », « Ventes et cessions »
+    detail      TEXT,
+    url         TEXT,
+    first_seen_at TEXT NOT NULL
+);
 CREATE TABLE IF NOT EXISTS runs (
     started_at  TEXT PRIMARY KEY,
     finished_at TEXT,
@@ -72,6 +82,14 @@ class Store:
         self.db = sqlite3.connect(path)
         self.db.row_factory = sqlite3.Row
         self.db.executescript(SCHEMA)
+        self._migrate()
+
+    def _migrate(self) -> None:
+        """Mises à niveau des bases créées par une version antérieure."""
+        columns = {r["name"] for r in self.db.execute("PRAGMA table_info(articles)")}
+        if "source_type" not in columns:
+            self.db.execute("ALTER TABLE articles ADD COLUMN source_type TEXT NOT NULL DEFAULT 'presse'")
+            self.db.commit()
 
     def close(self) -> None:
         self.db.close()
@@ -80,9 +98,11 @@ class Store:
     def add_article(self, a: dict) -> bool:
         """Insère un article s'il est nouveau. Renvoie True si ajouté."""
         cur = self.db.execute(
-            "INSERT OR IGNORE INTO articles VALUES (?,?,?,?,?,?,?,?,?,?)",
+            "INSERT OR IGNORE INTO articles (key, title, url, source, published_at, snippet, themes, competitors, "
+            "score, first_seen_at, source_type) VALUES (?,?,?,?,?,?,?,?,?,?,?)",
             (a["key"], a["title"], a["url"], a["source"], a.get("published_at"), a.get("snippet"),
-             json.dumps(a["themes"]), json.dumps(a["competitors"]), a["score"], now_iso()),
+             json.dumps(a["themes"]), json.dumps(a["competitors"]), a["score"], now_iso(),
+             a.get("source_type", "presse")),
         )
         self.db.commit()
         return cur.rowcount == 1
@@ -148,6 +168,21 @@ class Store:
     def latest_period(self, name: str) -> str | None:
         periods = self.periods(name)
         return periods[0] if periods else None
+
+    # ── Annonces légales des concurrents ──
+    def add_company_event(self, e: dict) -> bool:
+        cur = self.db.execute(
+            "INSERT OR IGNORE INTO company_events VALUES (?,?,?,?,?,?,?,?)",
+            (e["id"], e["competitor"], e["siren"], e["published_at"], e.get("family"), e.get("detail"),
+             e.get("url"), now_iso()),
+        )
+        self.db.commit()
+        return cur.rowcount == 1
+
+    def company_events_since(self, since_date: str) -> list[dict]:
+        rows = self.db.execute("SELECT * FROM company_events WHERE published_at >= ? ORDER BY published_at DESC",
+                               (since_date,))
+        return [dict(r) for r in rows]
 
     # ── Appels d'offres ──
     def add_tender(self, t: dict) -> bool:

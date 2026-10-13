@@ -15,16 +15,18 @@ import yaml
 
 from .classify import compile_competitors, compile_themes
 from .collectors.atmp import collect_atmp
+from .collectors.companies import collect_companies
 from .collectors.competitors import collect_competitors
 from .collectors.market import collect_jobs, collect_market_size, collect_tenders
 from .collectors.press import collect_press
+from .collectors.regulation import collect_regulation
 from .digest import build_digest
 from .html_export import render_html
 from .http import PoliteSession, describe_error
 from .storage import Store, now_iso
 
 ROOT = Path(__file__).resolve().parent.parent
-VOLETS = ("press", "competitors", "market", "atmp")
+VOLETS = ("press", "regulation", "competitors", "market", "atmp")
 
 
 def load_config(path: Path) -> dict:
@@ -45,9 +47,13 @@ def run_collect(cfg: dict, store: Store, volets: list[str], days: int) -> dict:
     if "press" in volets:
         print("· Presse…", flush=True)
         report["Presse"] = collect_press(cfg, http, store, compile_themes(cfg["themes"]), compile_competitors(cfg["competitors"]))
+    if "regulation" in volets:
+        print("· Réglementation (EUR-Lex)…", flush=True)
+        report["Réglementation"] = collect_regulation(cfg, http, store, compile_themes(cfg["themes"]),
+                                                      compile_competitors(cfg["competitors"]))
     if "competitors" in volets:
         print("· Concurrents…", flush=True)
-        report["Concurrents"] = collect_competitors(cfg, http, store)
+        report["Concurrents"] = {**collect_competitors(cfg, http, store), **collect_companies(cfg, http, store)}
     if "market" in volets:
         print("· Marché…", flush=True)
         report["Marché"] = {

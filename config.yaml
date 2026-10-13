@@ -4,77 +4,179 @@
 
 http:
   # Identifie le robot auprès des sites (bonne pratique). Ajouter un contact.
-  user_agent: "RegloVeille/0.1 (projet étudiant MyDigitalSchool; contact: a-completer)"
+  user_agent: "RegloVeille/0.2 (projet étudiant MyDigitalSchool; contact: a-completer)"
   timeout_s: 20
   # Délai minimal entre deux requêtes vers un même domaine.
   min_delay_s: 1.5
 
 # ─────────────────────────────── Presse & tendances ───────────────────────────────
 press:
-  # Flux RSS publics, robots.txt vérifié. Les articles sont filtrés par thèmes (plus bas).
-  # Écartés : Google News (robots.txt interdit /rss/search), Éditions Tissot (403 aux robots).
-  feeds:
-    - { name: Novethic, url: "https://www.novethic.fr/feed" }
-    - { name: "L'Info Durable", url: "https://www.linfodurable.fr/rss.xml" }
-    - { name: Actu-Environnement, url: "https://www.actu-environnement.com/flux/rss/environnement/" }
-    - { name: Qualiblog, url: "https://www.qualiblog.fr/feed/" }
-    - { name: L'Usine Nouvelle, url: "https://www.usinenouvelle.com/rss/" }
-    - { name: Maddyness, url: "https://www.maddyness.com/feed/" }
-    - { name: FrenchWeb, url: "https://www.frenchweb.fr/feed" }
-    - { name: CNIL, url: "https://www.cnil.fr/fr/rss.xml" }
-  # Longueur max du résumé conservé (extrait du flux, pas l'article : droit voisin).
+  # Âge maximal d'un article conservé (les recherches Bing remontent parfois des articles anciens).
+  max_age_days: 120
+  # Longueur max du résumé conservé (extrait, pas l'article : droit voisin).
   snippet_chars: 280
 
-# Classement par mots-clés (texte normalisé : minuscules, sans accents).
-# Un article est retenu s'il touche au moins un thème « coeur » ou cite un concurrent.
+  # Flux RSS publics, robots.txt vérifié. type : presse | spécialisé | institutionnel | concurrent
+  # Écartés : Google News (robots.txt interdit /rss/search), Éditions Tissot, Préventique (403 aux robots),
+  # GDELT (limite de débit trop stricte pour une collecte fiable).
+  feeds:
+    - { name: ANACT, url: "https://www.anact.fr/rss.xml", type: institutionnel }
+    - { name: CNIL, url: "https://www.cnil.fr/fr/rss.xml", type: institutionnel }
+    - { name: "Actu-Environnement (risques)", url: "https://www.actu-environnement.com/flux/rss/risques/", type: spécialisé }
+    - { name: "Actu-Environnement (déchets)", url: "https://www.actu-environnement.com/flux/rss/dechets/", type: spécialisé }
+    - { name: "Actu-Environnement (énergie)", url: "https://www.actu-environnement.com/flux/rss/energie/", type: spécialisé }
+    - { name: Qualiblog, url: "https://www.qualiblog.fr/feed/", type: spécialisé }
+    - { name: Novethic, url: "https://www.novethic.fr/feed", type: presse }
+    - { name: "L'Info Durable", url: "https://www.linfodurable.fr/rss.xml", type: presse }
+    - { name: "L'Usine Nouvelle", url: "https://www.usinenouvelle.com/rss/", type: presse }
+    - { name: Maddyness, url: "https://www.maddyness.com/feed/", type: presse }
+    - { name: FrenchWeb, url: "https://www.frenchweb.fr/feed", type: presse }
+    - { name: "Blog BlueKanGo", url: "https://www.bluekango.com/feed/", type: concurrent }
+    - { name: "Blog Preventeo", url: "https://www.preventeo.com/fr/feed/", type: concurrent }
+
+  # Recherches d'actualité Bing News (flux RSS public, autorisé par robots.txt).
+  # Requêtes métier précises : c'est ici qu'on « creuse ». Les concurrents sont ajoutés automatiquement.
+  bing_queries:
+    - '"document unique" DUERP'
+    - '"évaluation des risques professionnels"'
+    - '"faute inexcusable" employeur'
+    - '"inspection du travail" entreprise sanction'
+    - '"risques psychosociaux" entreprise'
+    - 'QVCT "qualité de vie et des conditions de travail"'
+    - '"maladie professionnelle" reconnaissance'
+    - '"taux AT/MP" OR "cotisation AT/MP"'
+    - 'pénibilité "C2P" OR "compte professionnel de prévention"'
+    - '"ISO 45001" certification'
+    - '"ISO 14001" certification'
+    - '"ISO 9001:2026" OR "ISO 9001 2026"'
+    - 'VSME PME'
+    - 'CSRD Omnibus PME'
+    - '"devoir de vigilance" entreprise'
+    - '"bilan carbone" OR BEGES obligation entreprise'
+    - '"décret tertiaire"'
+    - 'ICPE Seveso exploitant'
+    - '"logiciel QHSE"'
+    - '"logiciel HSE" OR "logiciel RSE"'
+    - '"veille réglementaire" HSE OR QHSE'
+    - 'EcoVadis notation fournisseurs'
+    # Textes français (en attendant l'API Légifrance) : décrets et arrêtés commentés par la presse.
+    - '"Journal officiel" décret "santé et sécurité au travail"'
+    - '"Journal officiel" arrêté prévention "risques professionnels"'
+    - '"Journal officiel" décret ICPE OR "installations classées"'
+    - '"Journal officiel" décret reporting durabilité OR CSRD'
+
+# ─────────────────────────────── Classement ───────────────────────────────
+# Texte normalisé (minuscules, sans accents), mots entiers. Score = 2 points par mot-clé distinct
+# d'un thème « coeur », 1 point sinon, 3 points par concurrent cité.
+relevance:
+  # Un article doit atteindre ce score (évite les articles « vitrine » qui citent un seul mot générique).
+  min_score: 4
+  # Résultats de recherche Bing : la requête est déjà ciblée, un mot-clé métier dans l'article suffit.
+  search_min_score: 2
+  # Âge maximal des articles trouvés en cherchant le nom d'un concurrent (signal plus rare, plus durable).
+  competitor_max_age_days: 365
+  # Écarter les articles en anglais.
+  french_only: true
+
 themes:
-  csrd_vsme:
-    label: "CSRD / VSME / reporting"
+  sst_prevention:
+    label: "Santé, sécurité & prévention"
     core: true
-    keywords: [csrd, vsme, omnibus, "rapport de durabilite", "double materialite", esrs, efrag, "reporting extra-financier", "taxonomie verte"]
-  securite_travail:
-    label: "Santé & sécurité au travail"
-    core: true
-    keywords: ["accident du travail", "accidents du travail", "maladie professionnelle", "maladies professionnelles", "sante au travail", "securite au travail", duerp, "document unique", "risques psychosociaux", "troubles musculosquelettiques", inrs, carsat, "prevention des risques", "at/mp"]
-  qualite_iso:
-    label: "Qualité, normes & certifications"
-    core: true
-    keywords: [qhse, hse, "iso 9001", "iso 14001", "iso 45001", "iso 50001", "iso 26000", "systeme de management", "audit qualite"]
-  rse_labels:
-    label: "RSE, labels & notations"
-    core: true
-    keywords: [rse, ecovadis, "label rse", "b corp", "societe a mission", "societes a mission", "notation extra-financiere", esg, "achats responsables", "devoir de vigilance"]
-  carbone_environnement:
-    label: "Carbone & environnement"
-    core: true
-    keywords: ["bilan carbone", "bilan ges", beges, decarbonation, "empreinte carbone", "scope 3", "transition ecologique"]
-  outils_digital:
-    label: "Outils & digitalisation"
-    core: false
-    keywords: [logiciel, saas, plateforme, digitalisation, "intelligence artificielle", "donnees esg", tableur, automatisation]
-  marche_financement:
-    label: "Marché, financement & acteurs"
-    core: false
-    keywords: ["levee de fonds", leve, rachat, acquisition, startup, "start-up", bpifrance, subvention, "chiffre d'affaires"]
+    keywords: [duerp, "document unique", "evaluation des risques", "accident du travail", "accidents du travail",
+               "maladie professionnelle", "maladies professionnelles", "at/mp", "taux at/mp", "faute inexcusable",
+               "inspection du travail", "risques psychosociaux", rps, "troubles musculosquelettiques", tms, penibilite,
+               c2p, "plan de prevention", "permis feu", "protocole de securite", epi, "equipements de protection",
+               "sante au travail", "securite au travail", "service de prevention", inrs, carsat, anact, qvct,
+               "conditions de travail", "medecine du travail", "travailleur isole", "risque chimique", "amiante"]
   reglementation:
-    label: "Réglementation"
+    label: "Réglementation & conformité"
+    core: true
+    keywords: [decret, arrete, "journal officiel", "entre en vigueur", "entree en vigueur", "projet de loi",
+               "proposition de loi", directive, "reglement europeen", "reglement (ue)", transposition, "mise en demeure",
+               sanction, "obligation reglementaire", conformite, "veille reglementaire", "code du travail",
+               "code de l'environnement", rgpd, "ai act", "ia act"]
+  reporting_durabilite:
+    label: "CSRD, VSME & reporting durabilité"
+    core: true
+    keywords: [csrd, vsme, esrs, efrag, omnibus, "rapport de durabilite", "double materialite", "reporting extra-financier",
+               "taxonomie", "devoir de vigilance", cs3d, csddd, "declaration de performance extra-financiere", dpef]
+  normes_certification:
+    label: "Normes, certifications & labels"
+    core: true
+    keywords: [qhse, hse, qse, "iso 9001", "iso 14001", "iso 45001", "iso 50001", "iso 26000", mase, "systeme de management",
+               "audit interne", certification, ecovadis, "label rse", "b corp", "societe a mission", afnor]
+  environnement_risques:
+    label: "Environnement & risques industriels"
+    core: true
+    keywords: [icpe, seveso, "bilan carbone", "bilan ges", beges, "scope 3", decarbonation, "decret tertiaire",
+               "responsabilite elargie du producteur", rep, "dechets dangereux", "affichage environnemental",
+               "risque industriel", reach, "fiche de donnees de securite", fds, pfas]
+  solutions_marche:
+    label: "Solutions & acteurs du marché"
+    core: true
+    keywords: ["logiciel qhse", "logiciel hse", "logiciel rse", "logiciel qse", "plateforme rse", "solution saas",
+               "editeur de logiciel", "veille reglementaire", "levee de fonds", "leve des fonds", rachat, acquisition,
+               "rachete", "acquiert"]
+  contexte:
+    label: "Contexte (RSE, ESG, numérique)"
     core: false
-    keywords: [decret, "projet de loi", arrete, directive, "reglement europeen", obligation, sanction, rgpd, "ai act", "ia act"]
+    keywords: [rse, esg, "responsabilite societale", digitalisation, saas, "intelligence artificielle", startup, pme, eti]
 
 # ─────────────────────────────── Concurrents ───────────────────────────────
 # Liste indicative à valider par l'équipe (mapping concurrentiel).
-# urls : pages suivies (accueil, tarifs, offre…). Ajouter les pages tarifs quand elles existent.
-# aliases : noms détectés dans la presse.
+# urls : pages suivies (ajouter les pages tarifs) ; aliases : noms détectés dans la presse ;
+# siren : annonces légales BODACC (comptes, modifications, cessions, radiations). À vérifier.
+# ambiguous : nom courant (homonymes) → mention retenue seulement avec un thème métier, et recherche précisée (search).
 competitors:
-  - { name: Red-on-line, category: "Veille réglementaire HSE", urls: ["https://www.red-on-line.com"], aliases: ["red-on-line", "red on line"] }
-  - { name: Preventeo, category: "Veille réglementaire HSE", urls: ["https://www.preventeo.com"], aliases: [preventeo] }
-  - { name: Tennaxia, category: "Logiciel HSE / RSE", urls: ["https://www.tennaxia.com"], aliases: [tennaxia] }
-  - { name: BlueKanGo, category: "Logiciel QHSE", urls: ["https://www.bluekango.com"], aliases: [bluekango] }
-  - { name: Ennov, category: "Logiciel qualité", urls: ["https://www.ennov.com"], aliases: [ennov] }
-  - { name: Qualios, category: "Logiciel qualité", urls: ["https://www.qualios.com"], aliases: [qualios] }
-  - { name: Greenly, category: "Plateforme carbone", urls: ["https://www.greenly.earth"], aliases: [greenly] }
-  - { name: Sweep, category: "Plateforme ESG / carbone", urls: ["https://www.sweep.net"], aliases: ["sweep"] }
-  - { name: EcoVadis, category: "Notation RSE", urls: ["https://ecovadis.com"], aliases: [ecovadis] }
+  - { name: Red-on-line, category: "Veille réglementaire HSE", urls: ["https://www.red-on-line.com"], aliases: ["red-on-line", "red on line"], siren: "425043064" }
+  - { name: Preventeo, category: "Veille réglementaire HSE", urls: ["https://www.preventeo.com"], aliases: [preventeo], siren: "478822653" }
+  - { name: Tennaxia, category: "Logiciel HSE / RSE", urls: ["https://www.tennaxia.com"], aliases: [tennaxia], siren: "435305636" }
+  - { name: BlueKanGo, category: "Logiciel QHSE", urls: ["https://www.bluekango.com"], aliases: [bluekango], siren: "420710097" }
+  - { name: Ennov, category: "Logiciel qualité", urls: ["https://www.ennov.com"], aliases: [ennov], siren: "428692701" }
+  - { name: Qualios, category: "Logiciel qualité", urls: ["https://www.qualios.com"], aliases: [qualios], siren: "451953319" }
+  - { name: Qontinua, category: "Logiciel QHSE / RSE", urls: [], aliases: [qontinua], siren: "931554729" }
+  - { name: Greenly, category: "Plateforme carbone", urls: ["https://www.greenly.earth"], aliases: [greenly], ambiguous: true, search: 'Greenly carbone OR ACV OR climat' }
+  - { name: Sweep, category: "Plateforme ESG / carbone", urls: ["https://www.sweep.net"], aliases: ["sweep"], siren: "883967879", ambiguous: true, search: 'Sweep carbone OR ESG OR CSRD' }
+  - { name: EcoVadis, category: "Notation RSE", urls: ["https://ecovadis.com"], aliases: [ecovadis], siren: "497842914" }
+
+companies:
+  bodacc_url: "https://bodacc-datadila.opendatasoft.com/api/explore/v2.1/catalog/datasets/annonces-commerciales/records"
+  lookback_days: 365
+
+# ─────────────────────────────── Réglementation officielle ───────────────────────────────
+regulation:
+  # EUR-Lex via le point d'accès SPARQL public de l'Office des publications (Cellar).
+  # Seuls les actes législatifs (CELEX 3…) et les propositions / travaux préparatoires (CELEX 5…).
+  sparql_url: "https://publications.europa.eu/webapi/rdf/sparql"
+  lookback_days: 120
+  # Expressions recherchées dans le titre français (expressions régulières, insensibles à la casse).
+  title_patterns:
+    - "durabilité"
+    - "devoir de vigilance"
+    - "santé et (de la )?sécurité"
+    - "sécurité et (de la )?santé"
+    - "agents (chimiques|cancérigènes|mutagènes)"
+    - "équipements de protection individuelle"
+    - "taxonomie"
+    - "écoconception"
+    - "allégations environnementales"
+    - "gaz à effet de serre"
+    - "substances chimiques|REACH"
+    - "emballages et (aux )?déchets"
+    - "machines"
+    - "omnibus"
+    # Textes de référence : tout acte qui les modifie ou les complète est retenu.
+    - "2023/2772"          # normes ESRS
+    - "2013/34/UE"         # directive comptable, socle de la CSRD
+    - "2022/2464"          # CSRD
+    - "2024/1760"          # devoir de vigilance européen (CS3D)
+    - "1907/2006"          # REACH
+    - "89/391/CEE"         # directive-cadre santé et sécurité au travail
+  # Titres écartés (bruit : rectificatifs, secteurs hors cible).
+  title_exclude:
+    - "rectificatif|rectifiant|versions linguistiques"
+    - "exploitations agricoles|protéines|pêche|vitivinicole|denrées alimentaires|médicament"
+    - "réception par type|véhicules|aéronefs?|rescEU|protection civile"
 
 # ─────────────────────────────── Indicateurs marché ───────────────────────────────
 market:
@@ -88,9 +190,13 @@ market:
   annual_price_by_size_order: { 2: null, 3: null, 4: null, 5: null, 6: null }
 
 tenders:
-  # BOAMP (open data DILA) : avis publiés sur la période contenant un de ces termes dans l'objet.
+  # BOAMP (open data DILA) : avis contenant un de ces termes dans l'objet.
   boamp_url: "https://boamp-datadila.opendatasoft.com/api/explore/v2.1/catalog/datasets/boamp/records"
-  keywords: ["QHSE", "sécurité au travail", "document unique", "risques professionnels", "bilan carbone", "RSE", "CSRD", "ISO 45001", "ISO 14001"]
+  lookback_days: 90
+  # Recentré sur ce que Reglo vend (logiciel, veille, formation, DUERP, RSE) : pas de missions de chantier (SPS).
+  keywords: ["QHSE", "logiciel HSE", "logiciel QHSE", "logiciel RSE", "veille réglementaire", "document unique", "DUERP",
+             "risques psychosociaux", "formation sécurité", "formation santé et sécurité", "formation prévention",
+             "bilan carbone", "bilan GES", "RSE", "CSRD", "ISO 45001", "ISO 14001"]
 
 jobs:
   # API Offres d'emploi France Travail (inscription gratuite sur francetravail.io).

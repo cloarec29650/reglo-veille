@@ -12,7 +12,8 @@ UNKNOWN_SECTOR = "naf1:x"
 def articles(store: Store) -> pd.DataFrame:
     df = pd.read_sql_query("SELECT * FROM articles", store.db)
     if df.empty:
-        return df.assign(theme_principal=pd.Series(dtype=str), date=pd.Series(dtype="datetime64[ns, UTC]"))
+        return df.assign(theme_principal=pd.Series(dtype=str), date=pd.Series(dtype="datetime64[ns, UTC]"),
+                         source_type=pd.Series(dtype=str))
     df["themes"] = df["themes"].map(json.loads)
     df["competitors"] = df["competitors"].map(json.loads)
     df["theme_principal"] = df["themes"].map(lambda t: t[0] if t else "autres")
@@ -27,6 +28,14 @@ def competitor_changes(store: Store) -> pd.DataFrame:
         df["removed"] = df["removed"].map(json.loads)
         df["detected_at"] = pd.to_datetime(df["detected_at"], utc=True, format="ISO8601")
         df["price_change"] = df["price_change"].astype(bool)
+    return df
+
+
+def company_events(store: Store) -> pd.DataFrame:
+    """Annonces légales BODACC des concurrents, la plus récente en premier."""
+    df = pd.read_sql_query("SELECT * FROM company_events ORDER BY published_at DESC", store.db)
+    if not df.empty:
+        df["published_at"] = pd.to_datetime(df["published_at"])
     return df
 
 

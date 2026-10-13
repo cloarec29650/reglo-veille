@@ -60,7 +60,8 @@ def boamp_where(keywords: list[str], since: date) -> str:
 
 def collect_tenders(cfg: dict, http: PoliteSession, store: Store, days: int) -> dict:
     """Avis BOAMP récents dont l'objet contient un mot-clé QHSE / RSE."""
-    since = date.today() - timedelta(days=days)
+    # Historique plus long que la période du digest : les avis restent consultables dans le dashboard.
+    since = date.today() - timedelta(days=max(days, cfg["tenders"].get("lookback_days", days)))
     rows = http.get(cfg["tenders"]["boamp_url"], check_robots=False, params={
         "where": boamp_where(cfg["tenders"]["keywords"], since),
         "select": "idweb, objet, nomacheteur, nature_libelle, dateparution, datelimitereponse, titulaire, url_avis",

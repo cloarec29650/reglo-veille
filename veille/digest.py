@@ -54,11 +54,17 @@ def table(headers: list[str], rows: list[list[str]]) -> str:
     return "\n".join(lines)
 
 
-def _section_highlights(articles: list[dict], labels: dict) -> list[str]:
+SOURCE_TYPES = {"officiel": "texte officiel", "institutionnel": "institution", "spécialisé": "presse spécialisée",
+                "presse": "presse", "recherche": "recherche d'actualité", "concurrent": "blog concurrent"}
+
+
+def _section_highlights(articles: list[dict], official: list[dict], labels: dict) -> list[str]:
     out = ["## À retenir", ""]
-    if not articles:
+    # Les 4 signaux les mieux classés + les 2 textes officiels les plus récents, sans doublon.
+    picks = articles[:4] + sorted(official, key=lambda a: a["published_at"] or "", reverse=True)[:2]
+    if not picks:
         return out + ["_Aucun article pertinent sur la période._", ""]
-    for a in articles[:5]:
+    for a in picks:
         tags = ", ".join(labels.get(t, t) for t in a["themes"][:3])
         comp = f" Cite **{', '.join(a['competitors'])}**." if a["competitors"] else ""
         # Deux espaces avant le retour à la ligne : saut de ligne Markdown dans l'élément de liste.
@@ -78,7 +84,8 @@ def _section_press(articles: list[dict], labels: dict) -> list[str]:
         items = groups[theme]
         out += [f"### {labels.get(theme, 'Autres')} ({len(items)})", ""]
         for a in items:
-            out.append(f"- [{a['title']}]({a['url']}), {a['source']}, {fmt_date(a['published_at'])}")
+            kind = SOURCE_TYPES.get(a.get("source_type", ""), "")
+            out.append(f"- [{a['title']}]({a['url']}), {a['source']}{f' ({kind})' if kind else ''}, {fmt_date(a['published_at'])}")
             if a.get("snippet"):
                 out.append(f"  > {a['snippet']}")
         out.append("")
@@ -92,13 +99,35 @@ def _section_press(articles: list[dict], labels: dict) -> list[str]:
     return out
 
 
-def _section_competitors(store: Store, since: str) -> list[str]:
+def _section_regulation(official: list[dict]) -> list[str]:
+    out = ["## Réglementation européenne", ""]
+    if not official:
+        return out + ["_Aucun nouvel acte ou proposition sur les sujets suivis pendant la période._", ""]
+    rows = [[fmt_date(a["published_at"]), a["source"].removeprefix("EUR-Lex (").rstrip(")"),
+             f"[{a['title'][:160]}]({a['url']})"] for a in sorted(official, key=lambda a: a["published_at"] or "", reverse=True)]
+    return out + [table(["Date", "Type", "Acte (EUR-Lex)"], rows), ""]
+
+
+def _section_competitors(store: Store, since: str, since_date: str, blogs: list[dict]) -> list[str]:
     out = ["## Concurrents", ""]
+    events = store.company_events_since(since_date)
+    out += ["### Annonces légales (BODACC)", ""]
+    if events:
+        out += [table(["Date", "Concurrent", "Annonce", "Détail"],
+                      [[fmt_date(e["published_at"]), e["competitor"], f"[{e['family'] or 'Annonce'}]({e['url']})",
+                        (e["detail"] or "—")[:160]] for e in events]), ""]
+    else:
+        out += ["_Aucune annonce légale sur la période._", ""]
+    if blogs:
+        out += ["### Publications des concurrents", ""]
+        out += [f"- [{a['title']}]({a['url']}), {a['source'].removeprefix('Blog ')}, {fmt_date(a['published_at'])}" for a in blogs]
+        out.append("")
+    out += ["### Changements sur leurs sites", ""]
     changes = store.changes_since(since)
     if changes:
         for ch in changes:
-            flag = " 💶 **mention de prix modifiée**" if ch["price_change"] else ""
-            out.append(f"### {ch['competitor']} — {ch['url']}{flag}")
+            flag = ", **mention de prix modifiée**" if ch["price_change"] else ""
+            out.append(f"**{ch['competitor']}** ({ch['url']}){flag}")
             out.append(f"_Détecté le {fmt_date(ch['detected_at'])} : {len(ch['added'])} ligne(s) ajoutée(s), "
                        f"{len(ch['removed'])} retirée(s)._")
             out += [f"- ➕ {md_escape(l)[:200]}" for l in ch["added"][:8]]
@@ -220,8 +249,12 @@ def _section_sources(store: Store) -> list[str]:
         out += [f"Dernière collecte : {fmt_date(last)}.", "",
                 table(["Volet", "Source", "État", "Détail", "Relevé le"], rows), ""]
     out += [
-        "- **Presse** : flux RSS publics, robots.txt respecté ; seuls le titre, le lien et un court extrait sont conservés (droit voisin de la presse).",
-        "- **Classement** : mots-clés par thème (`config.yaml`), sans IA générative ; un article est retenu s'il touche un thème « coeur » ou cite un concurrent.",
+        "- **Presse** : flux RSS spécialisés et recherches d'actualité Bing News, robots.txt respecté ; seuls le titre, "
+        "le lien et un court extrait sont conservés (droit voisin de la presse).",
+        "- **Réglementation** : actes et propositions publiés sur EUR-Lex (point d'accès SPARQL de l'Office des "
+        "publications), filtrés par sujets et textes de référence.",
+        "- **Annonces légales** : BODACC (DILA), par numéro SIREN des concurrents.",
+        "- **Classement** : mots-clés par thème (`config.yaml`), sans IA générative ; un article est retenu s'il touche un thème « coeur » (ou cite un concurrent) et atteint un score minimal ; les articles en anglais et trop anciens sont écartés.",
         "- **Concurrents** : comparaison du texte visible des pages publiques entre deux collectes.",
         "- **Marché & AT/MP** : open data Assurance Maladie (data.ameli.fr), régime général ; BOAMP (DILA) ; France Travail si configuré.",
         "- **Limites** : le régime général exclut le régime agricole (MSA), d'où le faible poids du secteur A ; "
@@ -250,9 +283,13 @@ def build_digest(store: Store, cfg: dict, days: int = 7, today: date | None = No
     ]
     lede = f"{period[0].upper()}{period[1:]} : {counts[0]}, {counts[1]} et {counts[2]}."
     lines = [f"# Veille marché, semaine {week.week} de {week.year}", "", lede, ""]
-    lines += _section_highlights(articles, labels)
-    lines += _section_press(articles, labels)
-    lines += _section_competitors(store, since_iso)
+    official = [a for a in articles if a.get("source_type") == "officiel"]
+    blogs = [a for a in articles if a.get("source_type") == "concurrent"]
+    press = [a for a in articles if a.get("source_type") not in ("officiel", "concurrent")]
+    lines += _section_highlights(press, official, labels)
+    lines += _section_regulation(official)
+    lines += _section_press(press, labels)
+    lines += _section_competitors(store, since_iso, since_date, blogs)
     lines += _section_market(store, cfg, since_date)
     lines += _section_atmp(store, cfg)
     lines += _section_sources(store)
