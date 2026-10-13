@@ -70,9 +70,9 @@ concurrentes, qui n'ont pas à être publics.
    *Advanced settings* → Python **3.11**.
 3. **Partage** : dans les réglages de l'app, *Sharing* → laisser l'app privée et inviter l'email de chaque
    personne. Elle se connecte avec Google ou par un lien reçu par email.
-4. **Collecte automatique** : le workflow `.github/workflows/veille.yml` collecte chaque jour, enregistre
-   la base et le digest dans le dépôt ; Streamlit redéploie l'app à chaque commit. Lancement manuel :
-   onglet *Actions* → *Veille quotidienne* → *Run workflow*.
+4. **Collecte automatique** : actuellement depuis un PC (voir « Automatiser ») ; chaque passage pousse la
+   base et le digest dans le dépôt, et Streamlit redéploie l'app à chaque commit. Le workflow
+   `.github/workflows/veille.yml` reste disponible en lancement manuel (onglet *Actions* → *Veille quotidienne*).
 
 En ligne, le dashboard est en **lecture seule** (pas de bouton de collecte) : le disque de Streamlit Cloud
 est temporaire et les visiteurs ne doivent pas déclencher de collecte.
@@ -103,10 +103,21 @@ Tout ce qui relève de **l'analyse** est un choix de l'équipe, à justifier :
 
 ## Automatiser
 
-**Windows (local)** : Planificateur de tâches → Créer une tâche de base → Quotidienne (ex. 8 h) →
-Démarrer un programme → `run_veille.bat`. Journal : `data\veille.log`.
+**Windows (mode actuel)** : la tâche planifiée « Reglo - Veille quotidienne » lance `run_veille.bat` chaque
+jour à 8 h (ou dès le démarrage du PC si 8 h a été manquée). Le script collecte, régénère le digest, commite
+`data/veille.sqlite` et `reports/` s'il y a du nouveau, puis pousse sur GitHub. Journal : `data\veille.log`.
 
-**VPS (plus tard)** : même commande via `cron`, par exemple `0 8 * * 1 cd /opt/veille && .venv/bin/python -m veille run`.
+```powershell
+Start-ScheduledTask -TaskName "Reglo - Veille quotidienne"     # lancer maintenant
+Get-ScheduledTaskInfo -TaskName "Reglo - Veille quotidienne"   # dernier et prochain passage
+Disable-ScheduledTask -TaskName "Reglo - Veille quotidienne"   # suspendre
+```
+
+**Une seule source doit écrire la base** : pour revenir à GitHub Actions (compte débloqué), réactiver le bloc
+`schedule` du workflow et désactiver la tâche Windows.
+
+**VPS (plus tard)** : même principe via `cron`, par exemple
+`0 6 * * * cd /opt/veille && .venv/bin/python -m veille run && git add data reports && git commit -m veille && git push`.
 
 ## Architecture
 

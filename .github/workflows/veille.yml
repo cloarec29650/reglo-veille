@@ -2,9 +2,12 @@
 # Streamlit Community Cloud redéploie l'app à chaque commit : le dashboard en ligne suit automatiquement.
 name: Veille quotidienne
 
+# La collecte quotidienne tourne pour l'instant depuis un PC (run_veille.bat + tâche planifiée Windows),
+# le compte GitHub ayant les Actions bloquées. Pour revenir à GitHub Actions : décommenter « schedule »
+# ET désactiver la tâche Windows (une seule source doit écrire la base).
 on:
-  schedule:
-    - cron: "0 5 * * *"     # chaque jour à 5 h UTC (7 h à Paris en été, 6 h en hiver)
+  # schedule:
+  #   - cron: "0 5 * * *"   # chaque jour à 5 h UTC (7 h à Paris en été, 6 h en hiver)
   workflow_dispatch: {}      # lancement manuel depuis l'onglet Actions
 
 permissions:
@@ -16,7 +19,7 @@ concurrency:
 
 jobs:
   collecte:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04     # version figée (ubuntu-latest passe à Ubuntu 26)
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
