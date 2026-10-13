@@ -19,7 +19,7 @@ from veille.storage import Store, now_iso
 ROOT = Path(__file__).resolve().parent
 DB_PATH = ROOT / "data" / "veille.sqlite"
 # Lecture seule en ligne : Streamlit Community Cloud monte le dépôt sous /mount/src (disque temporaire,
-# visiteurs invités) ; la collecte y est faite par GitHub Actions. Forçable avec VEILLE_LECTURE_SEULE=1.
+# visiteurs invités) ; la collecte est faite ailleurs (tâche planifiée). Forçable avec VEILLE_LECTURE_SEULE=1.
 READ_ONLY = str(ROOT).startswith("/mount/src") or os.environ.get("VEILLE_LECTURE_SEULE") == "1"
 
 # ── Direction visuelle : registre d'inspection QHSE (même charte que le digest HTML) ──
@@ -99,7 +99,7 @@ with st.sidebar:
     st.subheader("Collecte")
     if READ_ONLY:
         st.caption("Version en ligne, en lecture seule : les données sont mises à jour automatiquement "
-                   "chaque matin par la collecte planifiée (GitHub Actions).")
+                   "chaque matin par la collecte planifiée.")
     else:
         volets = st.multiselect("Volets", ["press", "competitors", "market", "atmp"],
                                 default=["press", "competitors", "market", "atmp"],
