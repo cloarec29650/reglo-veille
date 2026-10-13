@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.env
+.streamlit/secrets.toml
+data/veille.log
+# data/veille.sqlite est versionnée : c'est la source du dashboard en ligne.

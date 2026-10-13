@@ -1,0 +1,52 @@
+# Collecte hebdomadaire : met à jour data/veille.sqlite et reports/ dans le dépôt.
+# Streamlit Community Cloud redéploie l'app à chaque commit : le dashboard en ligne suit automatiquement.
+name: Veille hebdomadaire
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"     # chaque lundi à 6 h UTC (8 h à Paris en été, 7 h en hiver)
+  workflow_dispatch: {}      # lancement manuel depuis l'onglet Actions
+
+permissions:
+  contents: write            # nécessaire pour pousser la base et le digest
+
+concurrency:
+  group: veille
+  cancel-in-progress: false
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Installer les dépendances
+        run: pip install -r requirements.txt
+
+      - name: Tests (hors ligne)
+        run: python -m pytest -q
+
+      - name: Collecte et digest
+        env:
+          # Optionnel : API France Travail (Settings > Secrets and variables > Actions).
+          FT_CLIENT_ID: ${{ secrets.FT_CLIENT_ID }}
+          FT_CLIENT_SECRET: ${{ secrets.FT_CLIENT_SECRET }}
+        run: python -m veille run
+
+      - name: Enregistrer les résultats
+        run: |
+          git config user.name "veille-bot"
+          git config user.email "veille-bot@users.noreply.github.com"
+          git add data/veille.sqlite reports/
+          if git diff --cached --quiet; then
+            echo "Aucune nouveauté à enregistrer."
+          else
+            git commit -m "Veille : collecte du $(date +%F)"
+            git push
+          fi

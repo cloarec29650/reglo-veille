@@ -1,0 +1,103 @@
+# Veille marché Reglo (QHSE / RSE) : configuration.
+# Tout ce qui relève de l'analyse (thèmes, concurrents, cibles, hypothèses de prix)
+# est un choix de l'équipe : à relire, compléter et justifier.
+
+http:
+  # Identifie le robot auprès des sites (bonne pratique). Ajouter un contact.
+  user_agent: "RegloVeille/0.1 (projet étudiant MyDigitalSchool; contact: a-completer)"
+  timeout_s: 20
+  # Délai minimal entre deux requêtes vers un même domaine.
+  min_delay_s: 1.5
+
+# ─────────────────────────────── Presse & tendances ───────────────────────────────
+press:
+  # Flux RSS publics, robots.txt vérifié. Les articles sont filtrés par thèmes (plus bas).
+  # Écartés : Google News (robots.txt interdit /rss/search), Éditions Tissot (403 aux robots).
+  feeds:
+    - { name: Novethic, url: "https://www.novethic.fr/feed" }
+    - { name: "L'Info Durable", url: "https://www.linfodurable.fr/rss.xml" }
+    - { name: Actu-Environnement, url: "https://www.actu-environnement.com/flux/rss/environnement/" }
+    - { name: Qualiblog, url: "https://www.qualiblog.fr/feed/" }
+    - { name: L'Usine Nouvelle, url: "https://www.usinenouvelle.com/rss/" }
+    - { name: Maddyness, url: "https://www.maddyness.com/feed/" }
+    - { name: FrenchWeb, url: "https://www.frenchweb.fr/feed" }
+    - { name: CNIL, url: "https://www.cnil.fr/fr/rss.xml" }
+  # Longueur max du résumé conservé (extrait du flux, pas l'article : droit voisin).
+  snippet_chars: 280
+
+# Classement par mots-clés (texte normalisé : minuscules, sans accents).
+# Un article est retenu s'il touche au moins un thème « coeur » ou cite un concurrent.
+themes:
+  csrd_vsme:
+    label: "CSRD / VSME / reporting"
+    core: true
+    keywords: [csrd, vsme, omnibus, "rapport de durabilite", "double materialite", esrs, efrag, "reporting extra-financier", "taxonomie verte"]
+  securite_travail:
+    label: "Santé & sécurité au travail"
+    core: true
+    keywords: ["accident du travail", "accidents du travail", "maladie professionnelle", "maladies professionnelles", "sante au travail", "securite au travail", duerp, "document unique", "risques psychosociaux", "troubles musculosquelettiques", inrs, carsat, "prevention des risques", "at/mp"]
+  qualite_iso:
+    label: "Qualité, normes & certifications"
+    core: true
+    keywords: [qhse, hse, "iso 9001", "iso 14001", "iso 45001", "iso 50001", "iso 26000", "systeme de management", "audit qualite"]
+  rse_labels:
+    label: "RSE, labels & notations"
+    core: true
+    keywords: [rse, ecovadis, "label rse", "b corp", "societe a mission", "societes a mission", "notation extra-financiere", esg, "achats responsables", "devoir de vigilance"]
+  carbone_environnement:
+    label: "Carbone & environnement"
+    core: true
+    keywords: ["bilan carbone", "bilan ges", beges, decarbonation, "empreinte carbone", "scope 3", "transition ecologique"]
+  outils_digital:
+    label: "Outils & digitalisation"
+    core: false
+    keywords: [logiciel, saas, plateforme, digitalisation, "intelligence artificielle", "donnees esg", tableur, automatisation]
+  marche_financement:
+    label: "Marché, financement & acteurs"
+    core: false
+    keywords: ["levee de fonds", leve, rachat, acquisition, startup, "start-up", bpifrance, subvention, "chiffre d'affaires"]
+  reglementation:
+    label: "Réglementation"
+    core: false
+    keywords: [decret, "projet de loi", arrete, directive, "reglement europeen", obligation, sanction, rgpd, "ai act", "ia act"]
+
+# ─────────────────────────────── Concurrents ───────────────────────────────
+# Liste indicative à valider par l'équipe (mapping concurrentiel).
+# urls : pages suivies (accueil, tarifs, offre…). Ajouter les pages tarifs quand elles existent.
+# aliases : noms détectés dans la presse.
+competitors:
+  - { name: Red-on-line, category: "Veille réglementaire HSE", urls: ["https://www.red-on-line.com"], aliases: ["red-on-line", "red on line"] }
+  - { name: Preventeo, category: "Veille réglementaire HSE", urls: ["https://www.preventeo.com"], aliases: [preventeo] }
+  - { name: Tennaxia, category: "Logiciel HSE / RSE", urls: ["https://www.tennaxia.com"], aliases: [tennaxia] }
+  - { name: BlueKanGo, category: "Logiciel QHSE", urls: ["https://www.bluekango.com"], aliases: [bluekango] }
+  - { name: Ennov, category: "Logiciel qualité", urls: ["https://www.ennov.com"], aliases: [ennov] }
+  - { name: Qualios, category: "Logiciel qualité", urls: ["https://www.qualios.com"], aliases: [qualios] }
+  - { name: Greenly, category: "Plateforme carbone", urls: ["https://www.greenly.earth"], aliases: [greenly] }
+  - { name: Sweep, category: "Plateforme ESG / carbone", urls: ["https://www.sweep.net"], aliases: ["sweep"] }
+  - { name: EcoVadis, category: "Notation RSE", urls: ["https://ecovadis.com"], aliases: [ecovadis] }
+
+# ─────────────────────────────── Indicateurs marché ───────────────────────────────
+market:
+  # Open data Assurance Maladie (régime général) : entreprises et salariés par taille et secteur.
+  ameli_base: "https://data.ameli.fr/api/explore/v2.1/catalog/datasets"
+  # Tranches d'effectif ciblées (ordre_taille_entreprise) : 1 <10, 2 10-19, 3 20-49,
+  # 4 50-149, 5 150-199, 6 200-499, 7 500+. Choix de cible à justifier.
+  target_size_orders: [2, 3, 4, 5, 6]
+  # Hypothèses de prix annuel (€ HT) par tranche, pour estimer le marché adressable.
+  # Laisser null tant que la grille tarifaire n'est pas décidée.
+  annual_price_by_size_order: { 2: null, 3: null, 4: null, 5: null, 6: null }
+
+tenders:
+  # BOAMP (open data DILA) : avis publiés sur la période contenant un de ces termes dans l'objet.
+  boamp_url: "https://boamp-datadila.opendatasoft.com/api/explore/v2.1/catalog/datasets/boamp/records"
+  keywords: ["QHSE", "sécurité au travail", "document unique", "risques professionnels", "bilan carbone", "RSE", "CSRD", "ISO 45001", "ISO 14001"]
+
+jobs:
+  # API Offres d'emploi France Travail (inscription gratuite sur francetravail.io).
+  # Activée seulement si FT_CLIENT_ID et FT_CLIENT_SECRET sont définis dans l'environnement.
+  keywords: ["QHSE", "HSE", "RSE", "responsable sécurité"]
+
+# ─────────────────────────────── Sinistralité AT/MP ───────────────────────────────
+atmp:
+  dataset: "sinistralite-par-secteur-d-activite-concerne-naf-1"
+  top_sectors: 8

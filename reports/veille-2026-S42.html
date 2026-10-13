@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Veille marché, semaine 42 de 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light;
+  --paper: #f3f5f6;        /* fond « papier de rapport », froid */
+  --sheet: #fbfcfc;        /* surfaces de tableau */
+  --ink: #1b2430;          /* encre ardoise */
+  --ink-2: #5b6672;        /* texte secondaire */
+  --rule: #d3d9de;         /* filets */
+  --link: #005387;         /* bleu « obligation » ISO 7010 */
+  --display: "Barlow Condensed", "Roboto Condensed", "Arial Narrow", sans-serif;
+  --text: "Barlow", "Segoe UI", Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --paper: #141a20; --sheet: #1a2129; --ink: #e4e9ee; --ink-2: #a3aeb9; --rule: #2c3640; --link: #74b3e6;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #141a20; --sheet: #1a2129; --ink: #e4e9ee; --ink-2: #a3aeb9; --rule: #2c3640; --link: #74b3e6;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 1.0625rem/1.6 var(--text); }
+a { color: var(--link); text-underline-offset: .18em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 2px; }
+
+.masthead { max-width: 1120px; margin: 0 auto; padding: 28px 24px 8px; }
+.product { margin: 0 0 18px; font-size: .95rem; color: var(--ink-2); }
+.issue { display: grid; grid-template-columns: auto 1fr; gap: 8px 28px; align-items: end; }
+.week { font: 700 clamp(4.5rem, 14vw, 8.5rem)/.8 var(--display); letter-spacing: -.02em; }
+.issue h1 { margin: 0 0 6px; font: 600 clamp(1.5rem, 3.2vw, 2.1rem)/1.15 var(--display); }
+.lede { margin: 0; max-width: 62ch; font-size: 1.12rem; color: var(--ink); }
+
+.layout { max-width: 1120px; margin: 0 auto; padding: 8px 24px 64px;
+          display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 48px; }
+.toc { position: sticky; top: 24px; align-self: start; padding-top: 34px; font-size: .95rem; }
+.toc p { margin: 0 0 8px; color: var(--ink-2); }
+.toc ul { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--rule); }
+.toc li { margin: 0; }
+.toc a { display: block; padding: 5px 0 5px 14px; margin-left: -2px; border-left: 2px solid transparent;
+         color: var(--ink); text-decoration: none; }
+.toc a:hover { border-left-color: var(--link); color: var(--link); }
+
+.content { min-width: 0; }
+.content h2 { margin: 44px 0 14px; padding-top: 12px; border-top: 2px solid var(--ink);
+              font: 600 1.85rem/1.1 var(--display); scroll-margin-top: 16px; }
+.content h3 { margin: 28px 0 8px; font: 600 1.25rem/1.2 var(--display); }
+.content p, .content ul, .content ol { max-width: 72ch; }
+.content ul { padding-left: 1.1em; }
+.content li { margin: 6px 0; }
+.content li::marker { color: var(--ink-2); }
+.content em { color: var(--ink-2); }
+blockquote { margin: 4px 0 12px; padding: 0 0 0 14px; border-left: 2px solid var(--rule); color: var(--ink-2); font-size: .97rem; }
+blockquote p { margin: 0; }
+
+.table-wrap { overflow-x: auto; margin: 10px 0 20px; background: var(--sheet); }
+table { border-collapse: collapse; width: 100%; font-size: .95rem; }
+th { text-align: left; font-weight: 600; color: var(--ink-2); border-bottom: 2px solid var(--ink); white-space: nowrap; }
+th, td { padding: 9px 12px; vertical-align: top; }
+td { border-bottom: 1px solid var(--rule); }
+td:not(:first-child) { font-variant-numeric: tabular-nums; }
+tr:last-child td { border-bottom: none; }
+
+footer { max-width: 1120px; margin: 0 auto; padding: 0 24px 40px; color: var(--ink-2); font-size: .9rem; }
+footer p { margin: 0; padding-top: 14px; border-top: 1px solid var(--rule); }
+
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; gap: 0; }
+  .toc { position: static; padding-top: 12px; }
+  .toc ul { display: flex; flex-wrap: wrap; gap: 4px 20px; border-left: none; }
+  .toc a { padding: 4px 0; margin: 0; border-left: none; text-decoration: underline; text-decoration-color: var(--rule); }
+}
+@media (max-width: 560px) {
+  .issue { grid-template-columns: 1fr; }
+  .masthead, .layout, footer { padding-left: 16px; padding-right: 16px; }
+}
+@media print {
+  body { background: #fff; }
+  .toc { display: none; }
+  .layout { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <p class="product">Reglo, veille du marché QHSE et RSE</p>
+  <div class="issue">
+    <span class="week" aria-hidden="true">S42</span>
+    <div>
+      <h1>Veille marché, semaine 42 de 2026</h1>
+      <p class="lede">Du 6 au 13 octobre 2026 : 8 articles retenus, 4 appels d'offres et aucun changement chez les concurrents.</p>
+    </div>
+  </div>
+</header>
+<div class="layout">
+  <nav class="toc" aria-label="Sommaire"><p>Sommaire</p><ul><li><a href="#a-retenir">À retenir</a></li><li><a href="#presse-et-tendances">Presse et tendances</a></li><li><a href="#concurrents">Concurrents</a></li><li><a href="#marche">Marché</a></li><li><a href="#sinistralite-atmp">Sinistralité AT/MP</a></li><li><a href="#sources-et-methode">Sources et méthode</a></li></ul></nav>
+  <main class="content">
+
+<h2 id="a-retenir">À retenir</h2>
+<ul>
+<li><strong><a href="https://www.linfodurable.fr/entreprises/sial-change-2026-les-rendez-vous-ne-pas-manquer-59270" target="_blank" rel="noopener noreferrer">SIAL For Change 2026 : les rendez-vous à ne pas manquer pour comprendre la transition agroalimentaire</a></strong><br>
+  L'Info Durable, 09/10/2026. <em>RSE, labels &amp; notations, Carbone &amp; environnement, Marché, financement &amp; acteurs.</em></li>
+<li><strong><a href="https://www.novethic.fr/economie-et-social/transformation-de-leconomie/le-portail-rse-change-dechelle-pour-accompagner-les-pme-vers-la-durabilite" target="_blank" rel="noopener noreferrer">Le Portail RSE change d'échelle pour mieux accompagner les PME vers la durabilité</a></strong><br>
+  Novethic, 08/10/2026. <em>RSE, labels &amp; notations, Outils &amp; digitalisation, Marché, financement &amp; acteurs.</em></li>
+<li><strong><a href="https://www.frenchweb.fr/carbonfarm-leve-7-millions-deuros-pour-rendre-la-reduction-du-methane-des-rizieres-mesurable-et-financable/463919" target="_blank" rel="noopener noreferrer">CARBONFARM lève 7 millions d’euros pour rendre la réduction du méthane des rizières mesurable et finançable</a></strong><br>
+  FrenchWeb, 13/10/2026. <em>Carbone &amp; environnement, Marché, financement &amp; acteurs.</em></li>
+<li><strong><a href="https://www.novethic.fr/economie-et-social/transformation-de-leconomie/directive-anti-greenwashing-entreprises-devoir-revoir-mots-rse" target="_blank" rel="noopener noreferrer">Directive anti-greenwashing : 7 entreprises sur 10 devront revoir les mots de la RSE</a></strong><br>
+  Novethic, 09/10/2026. <em>RSE, labels &amp; notations, Réglementation.</em></li>
+<li><strong><a href="https://www.linfodurable.fr/environnement/textiles-emmaus-repond-au-gouvernement-59303" target="_blank" rel="noopener noreferrer">Au ministre délégué de la Transition écologique, Emmaüs répond qu'elle n'exporte pas de déchets textiles</a></strong><br>
+  L'Info Durable, 09/10/2026. <em>Carbone &amp; environnement.</em></li>
+</ul>
+<h2 id="presse-et-tendances">Presse et tendances</h2>
+<h3 id="qualite-normes-certifications-1">Qualité, normes &amp; certifications (1)</h3>
+<ul>
+<li><a href="https://qualiblog.fr/outils-et-methodes/iso-9001-2026-saisir-opportunites-methode-exemple/" target="_blank" rel="noopener noreferrer">ISO 9001:2026 : vos opportunités dorment dans un tableau ? Voici comment les faire aboutir</a>, Qualiblog, 06/10/2026<blockquote>
+<p>La nouvelle édition d’ISO 9001 distingue plus clairement le traitement des risques de celui des opportunités. Pour une...</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="rse-labels-notations-4">RSE, labels &amp; notations (4)</h3>
+<ul>
+<li><a href="https://www.linfodurable.fr/entreprises/sial-change-2026-les-rendez-vous-ne-pas-manquer-59270" target="_blank" rel="noopener noreferrer">SIAL For Change 2026 : les rendez-vous à ne pas manquer pour comprendre la transition agroalimentaire</a>, L'Info Durable, 09/10/2026<blockquote>
+<p>SIAL For Change est l'espace RSE de SIAL Paris. Pour cette édition, il change de dimension avec un lieu repensé au cœur du salon et un partenariat européen avec The Foodies, ouvrant la compétition aux PME de toute l'Europe. Pendant cinq jours, il réunira industriels, start-up et…</p>
+</blockquote>
+</li>
+<li><a href="https://www.novethic.fr/economie-et-social/transformation-de-leconomie/le-portail-rse-change-dechelle-pour-accompagner-les-pme-vers-la-durabilite" target="_blank" rel="noopener noreferrer">Le Portail RSE change d'échelle pour mieux accompagner les PME vers la durabilité</a>, Novethic, 08/10/2026<blockquote>
+<p>Les obligations RSE pour les PME peuvent parfois virer au casse-tête. Photo-de-Ante-Hamersmit-sur-Unsplash À quelles obligations RSE votre entreprise est-elle soumise ? Pour le savoir, le Portail RSE propose un test en quelques étapes. Il suffit de renseigner son nom ou son…</p>
+</blockquote>
+</li>
+<li><a href="https://www.novethic.fr/economie-et-social/transformation-de-leconomie/directive-anti-greenwashing-entreprises-devoir-revoir-mots-rse" target="_blank" rel="noopener noreferrer">Directive anti-greenwashing : 7 entreprises sur 10 devront revoir les mots de la RSE</a>, Novethic, 09/10/2026<blockquote>
+<p>69% des entreprises engagées dans la RSE utilisent des mots visés par la directive anti-greenwashing. @ Jason Mavrommatis sur Unsplash Les entreprises vont devoir être beaucoup plus vigilantes sur leurs allégations environnementales. La directive anti-greenwashing, entrée en…</p>
+</blockquote>
+</li>
+<li><a href="https://www.novethic.fr/economie-et-social/business-model-en-transition/pfas-seb-mis-demeure-pour-manquement-devoir-vigilance" target="_blank" rel="noopener noreferrer">PFAS : SEB est mis en demeure pour manquement à son devoir de vigilance</a>, Novethic, 09/10/2026<blockquote>
+<p>Seb, fabricant des poêles Tefal, est mis en demeure sur son devoir de vigilance concernant l'utilisation des PFAS, ces polluants éternels très controversés. SERGE TENANI / HANS LUCAS VIA AFP Le fabricant des poêles Tefal a trois mois pour revoir sa copie. Ce 9 octobre…</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="carbone-environnement-3">Carbone &amp; environnement (3)</h3>
+<ul>
+<li><a href="https://www.frenchweb.fr/carbonfarm-leve-7-millions-deuros-pour-rendre-la-reduction-du-methane-des-rizieres-mesurable-et-financable/463919" target="_blank" rel="noopener noreferrer">CARBONFARM lève 7 millions d’euros pour rendre la réduction du méthane des rizières mesurable et finançable</a>, FrenchWeb, 13/10/2026<blockquote>
+<p>La société française annonce une série A de 7 millions d’euros pour développer ses programmes de décarbonation du riz. Son approche associe suivi satellitaire, modélisation des émissions et financement climatique, avec un enjeu : déployer des pratiques économes en eau auprès de…</p>
+</blockquote>
+</li>
+<li><a href="https://www.linfodurable.fr/environnement/textiles-emmaus-repond-au-gouvernement-59303" target="_blank" rel="noopener noreferrer">Au ministre délégué de la Transition écologique, Emmaüs répond qu'elle n'exporte pas de déchets textiles</a>, L'Info Durable, 09/10/2026<blockquote>
+<p>L'association Emmaüs s'est élevée contre les propos du ministre délégué de la Transition écologique Mathieu Lefèvre, qui a déclaré fin septembre qu'"on ne pouvait soutenir des acteurs qui exportent nos déchets à l'autre bout de la planète pour les trier".</p>
+</blockquote>
+</li>
+<li><a href="https://www.linfodurable.fr/economie/transition-ecologique-la-cour-des-comptes-appelle-mieux-depenser-59276" target="_blank" rel="noopener noreferrer">Transition écologique : la Cour des comptes appelle à "mieux dépenser"</a>, L'Info Durable, 08/10/2026<blockquote>
+<p>Dans son deuxième rapport annuel sur la transition écologique, la Cour des comptes alerte sur les conséquences économiques et budgétaires d'un retard dans la lutte contre le changement climatique. Face à des résultats encore insuffisants, elle appelle l'État à mieux cibler ses…</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="concurrents">Concurrents</h2>
+<p><em>Aucun changement détecté sur les pages suivies.</em></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Concurrent</th>
+<th>Page suivie</th>
+<th>Suivie depuis</th>
+<th>Versions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BlueKanGo</td>
+<td>https://www.bluekango.com</td>
+<td>12/10/2026</td>
+<td>1</td>
+</tr>
+<tr>
+<td>EcoVadis</td>
+<td>https://ecovadis.com</td>
+<td>12/10/2026</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Preventeo</td>
+<td>https://www.preventeo.com</td>
+<td>12/10/2026</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Qualios</td>
+<td>https://www.qualios.com</td>
+<td>12/10/2026</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Red-on-line</td>
+<td>https://www.red-on-line.com</td>
+<td>12/10/2026</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Sweep</td>
+<td>https://www.sweep.net</td>
+<td>12/10/2026</td>
+<td>1</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="marche">Marché</h2>
+<h3 id="entreprises-du-regime-general-par-taille-2024">Entreprises du régime général par taille (2024)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Tranche d'effectif</th>
+<th>Entreprises</th>
+<th>Salariés</th>
+<th>Évol. vs 2023</th>
+<th>Cible</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Moins de 10</td>
+<td>2 070 273</td>
+<td>4 915 943</td>
+<td>+0,2 %</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>10-19</strong></td>
+<td>182 696</td>
+<td>2 440 785</td>
+<td>-0,2 %</td>
+<td>✔</td>
+</tr>
+<tr>
+<td><strong>20-49</strong></td>
+<td>117 047</td>
+<td>3 560 349</td>
+<td>+0,4 %</td>
+<td>✔</td>
+</tr>
+<tr>
+<td><strong>50-149</strong></td>
+<td>48 126</td>
+<td>3 853 242</td>
+<td>-0,0 %</td>
+<td>✔</td>
+</tr>
+<tr>
+<td><strong>150-199</strong></td>
+<td>5 358</td>
+<td>919 778</td>
+<td>+1,1 %</td>
+<td>✔</td>
+</tr>
+<tr>
+<td><strong>200-499</strong></td>
+<td>7 954</td>
+<td>2 339 622</td>
+<td>+0,2 %</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>500 et plus</td>
+<td>2 463</td>
+<td>2 769 849</td>
+<td>+2,8 %</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Entreprises dans les tranches ciblées : 361 181</strong></p>
+<p><em>Marché adressable en € : renseigner <code>market.annual_price_by_size_order</code> dans <code>config.yaml</code>.</em></p>
+<h3 id="entreprises-ciblees-par-secteur-croisees-avec-la-sinistralite-2024">Entreprises ciblées par secteur, croisées avec la sinistralité (2024)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Secteur (NAF)</th>
+<th>Entreprises ciblées</th>
+<th>Indice de fréquence AT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Commerce ; réparation d'automobiles et de motocycles (G)</td>
+<td>63 506</td>
+<td>26,4</td>
+</tr>
+<tr>
+<td>Santé humaine et action sociale (Q)</td>
+<td>39 390</td>
+<td>42,5</td>
+</tr>
+<tr>
+<td>Industrie manufacturière (C)</td>
+<td>39 259</td>
+<td>24,5</td>
+</tr>
+<tr>
+<td>Construction (F)</td>
+<td>36 559</td>
+<td>41,2</td>
+</tr>
+<tr>
+<td>Hébergement et restauration (I)</td>
+<td>30 854</td>
+<td>27,2</td>
+</tr>
+<tr>
+<td>Activités de services administratifs et de soutien (N)</td>
+<td>30 050</td>
+<td>33,9</td>
+</tr>
+<tr>
+<td>Activités spécialisées, scientifiques et techniques (M)</td>
+<td>29 825</td>
+<td>5,8</td>
+</tr>
+<tr>
+<td>Transports et entreposage (H)</td>
+<td>18 888</td>
+<td>46,7</td>
+</tr>
+<tr>
+<td>Information et communication (J)</td>
+<td>13 474</td>
+<td>3,3</td>
+</tr>
+<tr>
+<td>Activités financières et d'assurance (K)</td>
+<td>10 994</td>
+<td>3,7</td>
+</tr>
+<tr>
+<td>Administration publique (O)</td>
+<td>10 176</td>
+<td>15,1</td>
+</tr>
+<tr>
+<td>Enseignement (P)</td>
+<td>8 976</td>
+<td>10,3</td>
+</tr>
+<tr>
+<td>Autres activités de services (S)</td>
+<td>7 883</td>
+<td>18,5</td>
+</tr>
+<tr>
+<td>Arts, spectacles et activités récréatives (R)</td>
+<td>5 193</td>
+<td>40,0</td>
+</tr>
+<tr>
+<td>Activités immobilières (L)</td>
+<td>4 297</td>
+<td>14,2</td>
+</tr>
+<tr>
+<td>Production et distribution d'eau ; assainissement, gestion des déchets et dépollution (E)</td>
+<td>3 954</td>
+<td>37,1</td>
+</tr>
+<tr>
+<td>Production et distribution d'électricité, de gaz, de vapeur et d'air conditionné (D)</td>
+<td>769</td>
+<td>5,8</td>
+</tr>
+<tr>
+<td>Industries extractives (B)</td>
+<td>600</td>
+<td>27,8</td>
+</tr>
+<tr>
+<td>Agriculture, sylviculture et pêche (A)</td>
+<td>260</td>
+<td>27,0</td>
+</tr>
+<tr>
+<td>Activités extra-territoriales (U)</td>
+<td>154</td>
+<td>7,5</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="appels-doffres-publics-qhse-rse-boamp-4-sur-la-periode">Appels d'offres publics QHSE / RSE (BOAMP, 4 sur la période)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Objet</th>
+<th>Acheteur</th>
+<th>Nature</th>
+<th>Titulaire(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11/10/2026</td>
+<td><a href="https://www.boamp.fr/pages/avis/?q=idweb:26-97871" target="_blank" rel="noopener noreferrer">Accord cadre à bons de commandes pour des missions de coordination en matière de sécurité </a></td>
+<td>Institut National des Sciences Appliquées de Lyon (INSA Lyon)</td>
+<td>Avis de marché</td>
+<td>—</td>
+</tr>
+<tr>
+<td>09/10/2026</td>
+<td><a href="https://www.boamp.fr/pages/avis/?q=idweb:26-97398" target="_blank" rel="noopener noreferrer">Accord-cadre relatif aux missions de coordination en faveur de la sécurité et de la protec</a></td>
+<td>LIMOGES METROPOLE - Communauté urbaine</td>
+<td>Résultat de marché</td>
+<td>DEKRA INDUSTRIAL</td>
+</tr>
+<tr>
+<td>08/10/2026</td>
+<td><a href="https://www.boamp.fr/pages/avis/?q=idweb:26-97331" target="_blank" rel="noopener noreferrer">Realisation D'Actions De Formation Sur Le Theme Sante, Securite Et Conditions De Travail P</a></td>
+<td>Cnfpt - Délégation Ile de France</td>
+<td>Avis de marché</td>
+<td>—</td>
+</tr>
+<tr>
+<td>06/10/2026</td>
+<td><a href="https://www.boamp.fr/pages/avis/?q=idweb:26-95779" target="_blank" rel="noopener noreferrer">Fourniture d'équipements de protection individuelle, de vêtements et de chaussures de trav</a></td>
+<td>CA Ventoux Comtat Venaissin</td>
+<td>Avis de marché</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="sinistralite-atmp">Sinistralité AT/MP</h2>
+<p><strong>France entière (2024) :</strong> 549 614 accidents du travail, indice de fréquence 26,4 pour 1 000 salariés ; 50 598 maladies professionnelles (+6,7 % vs 2023).</p>
+<p>Secteurs les plus exposés (indice de fréquence AT, 2024) :</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Secteur (NAF)</th>
+<th>Indice de fréquence AT</th>
+<th>Évol. vs 2023</th>
+<th>AT</th>
+<th>MP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transports et entreposage (H)</td>
+<td>46,7</td>
+<td>-0,8</td>
+<td>57 848</td>
+<td>2 679</td>
+</tr>
+<tr>
+<td>Santé humaine et action sociale (Q)</td>
+<td>42,5</td>
+<td>+1,0</td>
+<td>96 811</td>
+<td>6 260</td>
+</tr>
+<tr>
+<td>Construction (F)</td>
+<td>41,2</td>
+<td>-1,7</td>
+<td>68 430</td>
+<td>7 022</td>
+</tr>
+<tr>
+<td>Arts, spectacles et activités récréatives (R)</td>
+<td>40,0</td>
+<td>-1,1</td>
+<td>12 506</td>
+<td>220</td>
+</tr>
+<tr>
+<td>Production et distribution d'eau ; assainissement, gestion des déchets et dépollution (E)</td>
+<td>37,1</td>
+<td>+0,4</td>
+<td>6 595</td>
+<td>446</td>
+</tr>
+<tr>
+<td>Activités de services administratifs et de soutien (N)</td>
+<td>33,9</td>
+<td>-2,5</td>
+<td>67 726</td>
+<td>3 958</td>
+</tr>
+<tr>
+<td>Industries extractives (B)</td>
+<td>27,8</td>
+<td>+1,0</td>
+<td>563</td>
+<td>75</td>
+</tr>
+<tr>
+<td>Hébergement et restauration (I)</td>
+<td>27,2</td>
+<td>-0,2</td>
+<td>34 725</td>
+<td>2 405</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="sources-et-methode">Sources et méthode</h2>
+<p>Dernière collecte : 13/10/2026.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Volet</th>
+<th>Source</th>
+<th>État</th>
+<th>Détail</th>
+<th>Relevé le</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Presse</td>
+<td>Novethic</td>
+<td>✅</td>
+<td>lus 10, retenus 3, nouveaux 0</td>
+<td>13/10/2026</td>
+</tr>
+<tr>
+<td>Presse</td>
+<td>L'Info Durable</td>
+<td>✅</td>
+<td>lus 20, retenus 3, nouveaux 0</td>
+<td>13/10/2026</td>
+</tr>
+<tr>
+<td>Presse</td>
+<td>Actu-Environnement</td>
+<td>✅</td>
+<td>lus 7, retenus 0, nouveaux 0</td>
+<td>13/10/2026</td>
+</tr>
+<tr>
+<td>Presse</td>
+<td>Qualiblog</td>
+<td>✅</td>
+<td>lus 10, retenus 6, nouveaux 0</td>
+<td>13/10/2026</td>
+</tr>
+<tr>
+<td>Presse</td>
+<td>L'Usine Nouvelle</td>
+<td>✅</td>
+<td>lus 41, retenus 0, nouveaux 0</td>
+<td>13/10/2026</td>
+</tr>
+<tr>
+<td>Presse</td>
+<td>Maddyness</td>
+<td>✅</td>
+<td>lus 10, retenus 0, nouveaux 0</td>
+<td>13/10/2026</td>
+</tr>
+<tr>
+<td>Presse</td>
+<td>FrenchWeb</td>
+<td>✅</td>
+<td>lus 100, retenus 1, nouveaux 1</td>
+<td>13/10/2026</td>
+</tr>
+<tr>
+<td>Presse</td>
+<td>CNIL</td>
+<td>✅</td>
+<td>lus 10, retenus 0, nouveaux 0</td>
+<td>13/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>Red-on-line (https://www.red-on-line.com)</td>
+<td>✅</td>
+<td>inchangée</td>
+<td>13/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>Preventeo (https://www.preventeo.com)</td>
+<td>✅</td>
+<td>inchangée</td>
+<td>13/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>Tennaxia (https://www.tennaxia.com)</td>
+<td>❌</td>
+<td>accès refusé aux robots (403) : suivi manuel</td>
+<td>13/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>BlueKanGo (https://www.bluekango.com)</td>
+<td>✅</td>
+<td>inchangée</td>
+<td>13/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>Ennov (https://www.ennov.com)</td>
+<td>❌</td>
+<td>accès refusé aux robots (403) : suivi manuel</td>
+<td>13/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>Qualios (https://www.qualios.com)</td>
+<td>✅</td>
+<td>inchangée</td>
+<td>13/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>Greenly (https://www.greenly.earth)</td>
+<td>❌</td>
+<td>accès refusé aux robots (403) : suivi manuel</td>
+<td>13/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>Sweep (https://www.sweep.net)</td>
+<td>✅</td>
+<td>inchangée</td>
+<td>13/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>EcoVadis (https://ecovadis.com)</td>
+<td>✅</td>
+<td>inchangée</td>
+<td>13/10/2026</td>
+</tr>
+<tr>
+<td>Marché</td>
+<td>Assurance Maladie (taille du marché)</td>
+<td>✅</td>
+<td>annee 2024, secteurs 22</td>
+<td>13/10/2026</td>
+</tr>
+<tr>
+<td>Marché</td>
+<td>BOAMP (appels d'offres)</td>
+<td>✅</td>
+<td>avis 4, nouveaux 0</td>
+<td>13/10/2026</td>
+</tr>
+<tr>
+<td>Marché</td>
+<td>France Travail (offres d'emploi)</td>
+<td>⏸</td>
+<td>non configuré (FT_CLIENT_ID / FT_CLIENT_SECRET absents)</td>
+<td>13/10/2026</td>
+</tr>
+<tr>
+<td>AT/MP</td>
+<td>Assurance Maladie (sinistralité)</td>
+<td>✅</td>
+<td>annee 2024, lignes 88</td>
+<td>13/10/2026</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>Presse</strong> : flux RSS publics, robots.txt respecté ; seuls le titre, le lien et un court extrait sont conservés (droit voisin de la presse).</li>
+<li><strong>Classement</strong> : mots-clés par thème (<code>config.yaml</code>), sans IA générative ; un article est retenu s'il touche un thème « coeur » ou cite un concurrent.</li>
+<li><strong>Concurrents</strong> : comparaison du texte visible des pages publiques entre deux collectes.</li>
+<li><strong>Marché &amp; AT/MP</strong> : open data Assurance Maladie (data.ameli.fr), régime général ; BOAMP (DILA) ; France Travail si configuré.</li>
+<li><strong>Limites</strong> : le régime général exclut le régime agricole (MSA), d'où le faible poids du secteur A ; la somme des secteurs peut différer légèrement du total national (secteurs non renseignés, secret statistique).</li>
+<li>Les chiffres sont des <strong>données brutes datées</strong> : leur interprétation relève de l'équipe.</li>
+</ul>
+  </main>
+</div>
+<footer><p>Généré automatiquement le 13/10/2026 à 09:35 à partir de données publiques datées. L'interprétation revient à l'équipe Reglo.</p></footer>
+</body>
+</html>

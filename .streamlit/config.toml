@@ -1,0 +1,16 @@
+[theme]
+# Registre d'inspection QHSE : papier froid, encre ardoise, bleu « obligation » ISO 7010.
+# Thème clair fixe : les couleurs des graphiques sont validées pour ce fond.
+base = "light"
+primaryColor = "#005387"
+backgroundColor = "#f3f5f6"
+secondaryBackgroundColor = "#e6ebee"
+textColor = "#1b2430"
+font = "sans serif"
+
+[server]
+headless = true
+port = 8501
+
+[browser]
+gatherUsageStats = false
