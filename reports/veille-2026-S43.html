@@ -1,0 +1,1073 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Veille marché, semaine 43 de 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light;
+  --paper: #f3f5f6;        /* fond « papier de rapport », froid */
+  --sheet: #fbfcfc;        /* surfaces de tableau */
+  --ink: #1b2430;          /* encre ardoise */
+  --ink-2: #5b6672;        /* texte secondaire */
+  --rule: #d3d9de;         /* filets */
+  --link: #005387;         /* bleu « obligation » ISO 7010 */
+  --display: "Barlow Condensed", "Roboto Condensed", "Arial Narrow", sans-serif;
+  --text: "Barlow", "Segoe UI", Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --paper: #141a20; --sheet: #1a2129; --ink: #e4e9ee; --ink-2: #a3aeb9; --rule: #2c3640; --link: #74b3e6;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #141a20; --sheet: #1a2129; --ink: #e4e9ee; --ink-2: #a3aeb9; --rule: #2c3640; --link: #74b3e6;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 1.0625rem/1.6 var(--text); }
+a { color: var(--link); text-underline-offset: .18em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; border-radius: 2px; }
+
+.masthead { max-width: 1120px; margin: 0 auto; padding: 28px 24px 8px; }
+.product { margin: 0 0 18px; font-size: .95rem; color: var(--ink-2); }
+.issue { display: grid; grid-template-columns: auto 1fr; gap: 8px 28px; align-items: end; }
+.week { font: 700 clamp(4.5rem, 14vw, 8.5rem)/.8 var(--display); letter-spacing: -.02em; }
+.issue h1 { margin: 0 0 6px; font: 600 clamp(1.5rem, 3.2vw, 2.1rem)/1.15 var(--display); }
+.lede { margin: 0; max-width: 62ch; font-size: 1.12rem; color: var(--ink); }
+
+.layout { max-width: 1120px; margin: 0 auto; padding: 8px 24px 64px;
+          display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 48px; }
+.toc { position: sticky; top: 24px; align-self: start; padding-top: 34px; font-size: .95rem; }
+.toc p { margin: 0 0 8px; color: var(--ink-2); }
+.toc ul { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--rule); }
+.toc li { margin: 0; }
+.toc a { display: block; padding: 5px 0 5px 14px; margin-left: -2px; border-left: 2px solid transparent;
+         color: var(--ink); text-decoration: none; }
+.toc a:hover { border-left-color: var(--link); color: var(--link); }
+
+.content { min-width: 0; }
+.content h2 { margin: 44px 0 14px; padding-top: 12px; border-top: 2px solid var(--ink);
+              font: 600 1.85rem/1.1 var(--display); scroll-margin-top: 16px; }
+.content h3 { margin: 28px 0 8px; font: 600 1.25rem/1.2 var(--display); }
+.content p, .content ul, .content ol { max-width: 72ch; }
+.content ul { padding-left: 1.1em; }
+.content li { margin: 6px 0; }
+.content li::marker { color: var(--ink-2); }
+.content em { color: var(--ink-2); }
+blockquote { margin: 4px 0 12px; padding: 0 0 0 14px; border-left: 2px solid var(--rule); color: var(--ink-2); font-size: .97rem; }
+blockquote p { margin: 0; }
+
+.table-wrap { overflow-x: auto; margin: 10px 0 20px; background: var(--sheet); }
+table { border-collapse: collapse; width: 100%; font-size: .95rem; }
+th { text-align: left; font-weight: 600; color: var(--ink-2); border-bottom: 2px solid var(--ink); white-space: nowrap; }
+th, td { padding: 9px 12px; vertical-align: top; }
+td { border-bottom: 1px solid var(--rule); }
+td:not(:first-child) { font-variant-numeric: tabular-nums; }
+tr:last-child td { border-bottom: none; }
+
+footer { max-width: 1120px; margin: 0 auto; padding: 0 24px 40px; color: var(--ink-2); font-size: .9rem; }
+footer p { margin: 0; padding-top: 14px; border-top: 1px solid var(--rule); }
+
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; gap: 0; }
+  .toc { position: static; padding-top: 12px; }
+  .toc ul { display: flex; flex-wrap: wrap; gap: 4px 20px; border-left: none; }
+  .toc a { padding: 4px 0; margin: 0; border-left: none; text-decoration: underline; text-decoration-color: var(--rule); }
+}
+@media (max-width: 560px) {
+  .issue { grid-template-columns: 1fr; }
+  .masthead, .layout, footer { padding-left: 16px; padding-right: 16px; }
+}
+@media print {
+  body { background: #fff; }
+  .toc { display: none; }
+  .layout { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <p class="product">Reglo, veille du marché QHSE et RSE</p>
+  <div class="issue">
+    <span class="week" aria-hidden="true">S43</span>
+    <div>
+      <h1>Veille marché, semaine 43 de 2026</h1>
+      <p class="lede">Du 14 au 21 octobre 2026 : 19 articles retenus, 6 appels d'offres et 10 changements chez les concurrents.</p>
+    </div>
+  </div>
+</header>
+<div class="layout">
+  <nav class="toc" aria-label="Sommaire"><p>Sommaire</p><ul><li><a href="#a-retenir">À retenir</a></li><li><a href="#reglementation-europeenne">Réglementation européenne</a></li><li><a href="#presse-et-tendances">Presse et tendances</a></li><li><a href="#concurrents">Concurrents</a></li><li><a href="#marche">Marché</a></li><li><a href="#sinistralite-atmp">Sinistralité AT/MP</a></li><li><a href="#sources-et-methode">Sources et méthode</a></li></ul></nav>
+  <main class="content">
+
+<h2 id="a-retenir">À retenir</h2>
+<ul>
+<li><strong><a href="https://www.voxlog.fr/actualite/11229/pour-un-decret-tertiaire-carbone" target="_blank" rel="noopener noreferrer">Pour un décret tertiaire « carbone »</a></strong><br>
+  Voxlog, 19/10/2026. <em>Environnement &amp; risques industriels, Réglementation &amp; conformité.</em></li>
+<li><strong><a href="https://formation.lefebvre-dalloz.fr/actualite/csrd-ce-qui-change-en-2026-et-ce-que-les-entreprises-doivent-desormais-faire" target="_blank" rel="noopener noreferrer">CSRD : ce qui change en 2026 et ce que les entreprises doivent désormais faire</a></strong><br>
+  Lefebvre Dalloz Compétences, 14/10/2026. <em>CSRD, VSME &amp; reporting durabilité, Réglementation &amp; conformité.</em></li>
+<li><strong><a href="https://www.village-justice.com/articles/absence-duerp-jusqu-000-euros-amende-administrative-par-salarie-depuis-juin,59468.html" target="_blank" rel="noopener noreferrer">Absence de DUERP : jusqu’à 4 000 euros d’amende administrative par salarié depuis le 27 juin 2026.</a></strong><br>
+  Village de la Justice, 19/10/2026. <em>Santé, sécurité &amp; prévention.</em></li>
+<li><strong><a href="https://www.actu-environnement.com/ae/news/directive-ied-elevages-porcs-volailles-regles-48683.php4" target="_blank" rel="noopener noreferrer">Les règles d'exploitation des élevages de volailles et de porcs relevant de la directive IED sont fixées</a></strong><br>
+  Actu-Environnement (risques), 19/10/2026. <em>Réglementation &amp; conformité.</em></li>
+</ul>
+<h2 id="reglementation-europeenne">Réglementation européenne</h2>
+<p><em>Aucun nouvel acte ou proposition sur les sujets suivis pendant la période.</em></p>
+<h2 id="presse-et-tendances">Presse et tendances</h2>
+<h3 id="sante-securite-prevention-11">Santé, sécurité &amp; prévention (11)</h3>
+<ul>
+<li><a href="https://www.village-justice.com/articles/absence-duerp-jusqu-000-euros-amende-administrative-par-salarie-depuis-juin,59468.html" target="_blank" rel="noopener noreferrer">Absence de DUERP : jusqu’à 4 000 euros d’amende administrative par salarié depuis le 27 juin 2026.</a>, Village de la Justice (recherche d'actualité), 19/10/2026<blockquote>
+<p>Depuis le 27 juin 2026, l’administration du travail peut prononcer une amende administrative de 4 000 euros maximum par salarié en l’absence de document unique au sein de l’entreprise.</p>
+</blockquote>
+</li>
+<li><a href="https://kohenavocats.fr/2026/10/15/morsure-chien-travail-accident-travail-faute-inexcusable-recours-maitre-2026/" target="_blank" rel="noopener noreferrer">Morsure de chien au travail : accident du travail, faute inexcusable et recours contre le maître (2026)</a>, kohenavocats.fr (recherche d'actualité), 15/10/2026<blockquote>
+<p>Mordu par un chien en travaillant (facteur, aide à domicile, livreur) : faire reconnaître l'accident du travail, obtenir la faute inexcusable et agir contre le maître et son assureur.</p>
+</blockquote>
+</li>
+<li><a href="https://formation.lefebvre-dalloz.fr/actualite/mp-les-jurisprudences-retenir-des-12-derniers-mois" target="_blank" rel="noopener noreferrer">AT-MP : les jurisprudences à retenir des 12 derniers mois</a>, Lefebvre Dalloz Compétences (recherche d'actualité), 14/10/2026<blockquote>
+<p>Ces derniers mois, la Cour de Cassation a rendu de nombreux arrêts relatifs aux accidents du travail et maladies professionnelles (AT-MP).</p>
+</blockquote>
+</li>
+<li><a href="https://www.lemonde.fr/vie-au-travail/article/2026/10/21/comment-les-petites-entreprises-apprennent-a-se-saisir-de-la-sante-mentale-au-travail_6798194_6768900.html" target="_blank" rel="noopener noreferrer">Comment les petites entreprises apprennent à se saisir de la santé mentale au travail</a>, Le Monde (recherche d'actualité), 20/10/2026<blockquote>
+<p>Formation aux premiers secours, recours à des experts en externe… A l’heure où les arrêts liés aux risques psychosociaux augmentent, les TPE-PME cherchent aussi des moyens de s’en prémunir, même si el ...</p>
+</blockquote>
+</li>
+<li><a href="https://www.lafranceagricole.fr/maladie-professionnelle/article/905013/les-cancers-de-la-peau-bientot-reconnus-en-maladie-professionnelle" target="_blank" rel="noopener noreferrer">Les cancers de la peau, bientôt reconnus en maladie professionnelle ?</a>, La France Agricole (recherche d'actualité), 20/10/2026<blockquote>
+<p>L’autorité sanitaire française a conclu à des preuves scientifiques solides entre l’exposition professionnelle aux rayons UV et ...</p>
+</blockquote>
+</li>
+<li><a href="https://presseagence.fr/paris-cancer-du-sein-vers-une-reconnaissance-comme-maladie-professionnelle/" target="_blank" rel="noopener noreferrer">PARIS : Cancer du sein – Vers une reconnaissance comm…</a>, Presse Agence (recherche d'actualité), 17/10/2026<blockquote>
+<p>L'Assemblée nationale débat de l'intégration du cancer du sein aux maladies professionnelles. Un enjeu majeur pour la santé des travailleuses.</p>
+</blockquote>
+</li>
+<li><a href="https://www.batiactu.com/edito/trois-questions-a-mohamed-trabelsi-expert-oppbtp-sur-75627.php" target="_blank" rel="noopener noreferrer">Risque UV : vers une reconnaissance du cancer de la peau comme maladie professionnelle ?</a>, Batiactu (recherche d'actualité), 16/10/2026<blockquote>
+<p>PRÉVENTION. L'Anses a publié son expertise sur l'exposition professionnelle aux UV, à laquelle les travailleurs du BTP sont particulièrement exposés. Mohamed Trabelsi, de la direction technique ... #B ...</p>
+</blockquote>
+</li>
+<li><a href="https://www.msn.com/fr-fr/finance/g%C3%A9n%C3%A9ral/cancer-de-la-peau-et-uv-au-travail-l-anses-pr%C3%A9conise-une-reconnaissance-comme-maladie-professionnelle/ar-AA2ek01O" target="_blank" rel="noopener noreferrer">Cancer de la peau et UV au travail : l'Anses préconise une reconnaissance comme maladie professionnelle</a>, RMC via MSN (recherche d'actualité), 15/10/2026<blockquote>
+<p>Alors que 3,5 millions de Français travaillent en extérieur ou exposés à des UV artificiels, l'Anses recommande ce jeudi de faciliter la reconnaissance du cancer de la peau en maladie professionnelle.</p>
+</blockquote>
+</li>
+<li><a href="https://www.parismatch.com/Actu/Sante/hotesses-de-lair-infirmieres-ouvrieres-leur-combat-pour-la-reconnaissance-du-cancer-du-sein-comme-maladie-professionnelle-277522" target="_blank" rel="noopener noreferrer">Hôtesses de l'air, infirmières, ouvrières : leur combat pour la reconnaissance du cancer du sein comme maladie professionnelle</a>, Paris Match (recherche d'actualité), 15/10/2026<blockquote>
+<p>Si le lien entre le cancer du sein et le travail de nuit est établi, les travailleuses exposées à ces risques peinent à obtenir une reconnaissance comme maladie professionnelle. À Paris Match, elles r ...</p>
+</blockquote>
+</li>
+<li><a href="https://www.msn.com/fr-xl/actualite/other/%C3%A7a-me-met-extr%C3%AAmement-en-col%C3%A8re-une-psychologue-d%C3%A9nonce-la-culpabilisation-insupportable-des-femmes-atteintes-du-cancer-du-sein/ar-AA2ejtcZ" target="_blank" rel="noopener noreferrer">“Ça me met extrêmement en colère ” : une psychologue dénonce la “culpabilisation insupportable“ des femmes atteintes du cancer du sein</a>, Femme Actuelle via MSN (recherche d'actualité), 15/10/2026<blockquote>
+<p>Faustine Bollaert recevait ce jeudi 15 octobre 2026 des pionnières de la reconnaissance du cancer du sein comme maladie professionnelle. Un parcours souvent long et difficile, notamment face à la culp ...</p>
+</blockquote>
+</li>
+<li><a href="https://www.laprovence.com/article/sante/35103128485872/apres-un-cancer-du-sein-la-provencale-sylvie-pioli-pedale-pour-defendre-la-sante-des-travailleuses-de-nuit" target="_blank" rel="noopener noreferrer">Après un cancer du sein, la Provençale Sylvie Pioli pédale pour défendre la santé des travailleuses de nuit</a>, La Provence (recherche d'actualité), 14/10/2026<blockquote>
+<p>Après avoir obtenu la reconnaissance de son cancer du sein comme maladie professionnelle, l’ancienne infirmière de l’hôpital de Martigues vient de parcourir 764 kilomètres à vélo, de Schengen à Lyon.</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="reglementation-conformite-4">Réglementation &amp; conformité (4)</h3>
+<ul>
+<li><a href="https://www.actu-environnement.com/ae/news/directive-ied-elevages-porcs-volailles-regles-48683.php4" target="_blank" rel="noopener noreferrer">Les règles d'exploitation des élevages de volailles et de porcs relevant de la directive IED sont fixées</a>, Actu-Environnement (risques) (presse spécialisée), 19/10/2026<blockquote>
+<p>La Commission européenne a fixé, via une décision d'exécution publiée le 16 octobre au Journal officiel, les conditions d'exploitation des élevages de volailles et de porcs relevant de la directive su...</p>
+</blockquote>
+</li>
+<li><a href="https://www.actu-environnement.com/ae/news/pprn-alea-reference-inondation-changement-climatique-48670.php4" target="_blank" rel="noopener noreferrer">Risques inondation : l'aléa de référence va être modifié afin de tenir compte des changements climatiques</a>, Actu-Environnement (risques) (presse spécialisée), 15/10/2026<blockquote>
+<p>Sont soumis à la consultation du public un projet de décret et d'arrêté relatifs aux risques d'inondations. Ces textes s'inscrivent dans la mise en oeuvre du troisième plan national d'adaptation au cha...</p>
+</blockquote>
+</li>
+<li><a href="https://www.linfodurable.fr/environnement/letat-ampute-les-renouvelables-pour-financer-lagriculture-59381" target="_blank" rel="noopener noreferrer">Pour financer les aides agricoles et les aides carburants, l'Etat annule des crédits dans les renouvelables</a>, L'Info Durable (presse), 15/10/2026<blockquote>
+<p>Plus de 400 millions d'euros du budget 2026, notamment dédiés aux énergies renouvelables ont été réalloués pour les aides aux agriculteurs annoncées en septembre et les aides carburants, selon un décret publié au Journal officiel jeudi.</p>
+</blockquote>
+</li>
+<li><a href="https://www.entreprises-magazine.com/blanchiment-dargent-le-cmf-renforce-laccompagnement-des-professionnels-du-marche-financier-en-matiere-de-conformite/" target="_blank" rel="noopener noreferrer">Blanchiment d’argent : Le CMF renforce l’accompagnement des professionnels du marché financier en matière de conformité</a>, Entreprises Magazine (recherche d'actualité), 17/10/2026<blockquote>
+<p>Le Conseil du Marché Financier (CMF) publie un guide pratique élargi relatif au respect des exigences en matière de lutte contre le, le financement du terrorisme et de la prolifération des armes desti ...</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="csrd-vsme-reporting-durabilite-2">CSRD, VSME &amp; reporting durabilité (2)</h3>
+<ul>
+<li><a href="https://formation.lefebvre-dalloz.fr/actualite/csrd-ce-qui-change-en-2026-et-ce-que-les-entreprises-doivent-desormais-faire" target="_blank" rel="noopener noreferrer">CSRD : ce qui change en 2026 et ce que les entreprises doivent désormais faire</a>, Lefebvre Dalloz Compétences (recherche d'actualité), 14/10/2026<blockquote>
+<p>En 2026, le périmètre de la CSRD a été réduit. La directive Omnibus a en effet diminué le nombre d'entreprises concernées et a allégé les exigences de ...</p>
+</blockquote>
+</li>
+<li><a href="https://www.village-justice.com/articles/spoofing-authentification-forte-devoir-vigilance-des-banques-nouveau-terrain,59504.html" target="_blank" rel="noopener noreferrer">Spoofing et authentification forte : le devoir de vigilance des banques, nouveau terrain d’indemnisation des victimes ?</a>, Village de la Justice (recherche d'actualité), 15/10/2026<blockquote>
+<p>Deux décisions rendues le 2 octobre 2026, l’une par le Tribunal judiciaire d’Albertville contre Boursorama (TJ Albertville, 1re ch., 2 oct. 2026, n° 24/00893), l’autre par le Tribunal des activités éc ...</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="environnement-risques-industriels-1">Environnement &amp; risques industriels (1)</h3>
+<ul>
+<li><a href="https://www.voxlog.fr/actualite/11229/pour-un-decret-tertiaire-carbone" target="_blank" rel="noopener noreferrer">Pour un décret tertiaire « carbone »</a>, Voxlog (recherche d'actualité), 19/10/2026<blockquote>
+<p>Une tribune signée par Benoit Dubois-Taine, associé chez ECH Energie, conseil indépendant dans les domaines de l’énergie et de la décarbonation appliquées à l’i ...</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="concurrents">Concurrents</h2>
+<h3 id="annonces-legales-bodacc">Annonces légales (BODACC)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Concurrent</th>
+<th>Annonce</th>
+<th>Détail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>15/10/2026</td>
+<td>Qualios</td>
+<td><a href="https://www.bodacc.fr/pages/annonces-commerciales-detail/?q.id=id:C202601985927" target="_blank" rel="noopener noreferrer">Dépôts des comptes</a></td>
+<td>2026-03-31 ; Comptes annuels et rapports ; Les comptes annuels sont accompagnés d'une déclaration de confidentialité en application du premier ou deuxième aliné</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="publications-des-concurrents">Publications des concurrents</h3>
+<ul>
+<li><a href="https://www.agence-declic.fr/reference-client-accompagnement-rse-agence-declic/spie-building-solutions-france/" target="_blank" rel="noopener noreferrer">SPIE Building Solutions France</a>, Agence Déclic, 16/10/2026</li>
+</ul>
+<h3 id="changements-sur-leurs-sites">Changements sur leurs sites</h3>
+<p><strong>Sweep</strong> (https://www.sweep.net)
+<em>Détecté le 21/10/2026 : 1 ligne(s) ajoutée(s), 1 retirée(s).</em>
+- ➕ Guide to using AI in Sustainability
+- ➖ Who owns Scope 3 data, reporting and reductions?</p>
+<p><strong>Utopies</strong> (https://utopies.com)
+<em>Détecté le 21/10/2026 : 3 ligne(s) ajoutée(s), 2 retirée(s).</em>
+- ➕ Altitude
+- ➕ Inscrire la démarche climatique dans la performance opérationnelle
+- ➕ #Climat
+- ➖ Métropole Européenne de Lille
+- ➖ Mobiliser les entreprises du territoire autour de la transition</p>
+<p><strong>Goodwill Management</strong> (https://goodwill-management.com)
+<em>Détecté le 21/10/2026 : 2 ligne(s) ajoutée(s), 2 retirée(s).</em>
+- ➕ EcoVadis
+- ➕ EcoVadis 2026-2027 : ce qui change dans l'évaluation RSE et l'attribution des médailles
+- ➖ Environnement
+- ➖ L'affichage environnemental : une obligation à venir pour le secteur de l'hôtellerie</p>
+<p><strong>ORKI</strong> (https://orki.green)
+<em>Détecté le 21/10/2026 : 1 ligne(s) ajoutée(s), 1 retirée(s).</em>
+- ➕ English
+- ➖ Orki vs Carbo</p>
+<p><strong>Sweep</strong> (https://www.sweep.net)
+<em>Détecté le 18/10/2026 : 1 ligne(s) ajoutée(s), 1 retirée(s).</em>
+- ➕ Reporting
+- ➖ CSRD in Germany 2026: Scope, timeline and what to do now</p>
+<p><strong>BlueKanGo</strong> (https://www.bluekango.com)
+<em>Détecté le 18/10/2026 : 11 ligne(s) ajoutée(s), 12 retirée(s).</em>
+- ➕ Webinaire le 29/10/26 - Réglementation européenne 2027 : CSRD, EUDR, PPWR, Taxonomie… comment anticiper les prochaines échéances ?
+- ➕ Témoignage Orange Marine
+- ➕ Orange Marine digitalise la sécurité et les opérations de ses navires câbliers partout dans le monde
+- ➕ "Grâce à cette solution web, même si le navire n'est pas raccordé à un réseau, les équipes gardent un accès fluide à l'ensemble de la documentation."
+- ➕ Julie ZARADE
+- ➕ Responsable QSE
+- ➕ "Comment le SDIS 60 optimise ses interventions et sa sécurité"
+- ➕ Florent ALIN
+- ➖ Webinaire le 27/10/26 - ISO 9001 v.2026 : Quelles évolutions prévues pour son SMQ ?
+- ➖ Etude de cas
+- ➖ SDIS : Optimiser l'accès à l’information et la réponse opérationnelle grâce au numérique
+- ➖ "Les caractéristiques de BlueKanGo répondent parfaitement à nos besoins de remontée d'information."
+- ➖ Stéphane Tollemer</p>
+<p><strong>Agence Déclic</strong> (https://www.agence-declic.fr)
+<em>Détecté le 18/10/2026 : 5 ligne(s) ajoutée(s), 5 retirée(s).</em>
+- ➕ SPIE Building Solutions France
+- ➕ Accompagnement dans la conception et l’animation des journées ambassadeurs RSE.
+- ➕ Chez AGRISOLEO
+- ➕ 32 quai Arloing
+- ➕ 69009 Lyon
+- ➖ Université Paris 1 Panthéon-Sorbonne
+- ➖ Structuration et déploiement du Schéma Directeur DD&amp;RSE et labellisation DD&amp;RSE
+- ➖ Chez Agrisoleo
+- ➖ 79 Rue Jacquard
+- ➖ 69004 Lyon</p>
+<p><strong>Sweep</strong> (https://www.sweep.net)
+<em>Détecté le 14/10/2026 : 1 ligne(s) ajoutée(s), 1 retirée(s).</em>
+- ➕ Guide To Fixing Your Sustainability Data
+- ➖ Fixing your sustainability data guide</p>
+<p><strong>EcoVadis</strong> (https://ecovadis.com)
+<em>Détecté le 14/10/2026 : 2 ligne(s) ajoutée(s), 2 retirée(s).</em>
+- ➕ The Global Standard for Resilient, Sustainable Supply Chains
+- ➕ Trusted data, actionable insights, continuous improvement
+- ➖ One brain for the supply chain
+- ➖ A connected system built on a global standard for measuring and understanding sustainability performance across supply chains.</p>
+<p><strong>Utopies</strong> (https://utopies.com)
+<em>Détecté le 14/10/2026 : 2 ligne(s) ajoutée(s), 3 retirée(s).</em>
+- ➕ Tribune
+- ➕ Une économie robuste repose moins sur quelques usines emblématiques que sur la densité et la diversité de son tissu productif
+- ➖ POINT.P
+- ➖ Transformer un réseau d’agences en véritable partenaire des territoires
+- ➖ #Consommation &amp; Distribution</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Concurrent</th>
+<th>Page suivie</th>
+<th>Suivie depuis</th>
+<th>Versions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Agence Déclic</td>
+<td>https://www.agence-declic.fr</td>
+<td>13/10/2026</td>
+<td>2</td>
+</tr>
+<tr>
+<td>BlueKanGo</td>
+<td>https://www.bluekango.com</td>
+<td>12/10/2026</td>
+<td>2</td>
+</tr>
+<tr>
+<td>EcoVadis</td>
+<td>https://ecovadis.com</td>
+<td>12/10/2026</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Goodwill Management</td>
+<td>https://goodwill-management.com</td>
+<td>13/10/2026</td>
+<td>2</td>
+</tr>
+<tr>
+<td>ORKI</td>
+<td>https://orki.green</td>
+<td>13/10/2026</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Preventeo</td>
+<td>https://www.preventeo.com</td>
+<td>12/10/2026</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Qualios</td>
+<td>https://www.qualios.com</td>
+<td>12/10/2026</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Red-on-line</td>
+<td>https://www.red-on-line.com</td>
+<td>12/10/2026</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Sweep</td>
+<td>https://www.sweep.net</td>
+<td>12/10/2026</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Utopies</td>
+<td>https://utopies.com</td>
+<td>13/10/2026</td>
+<td>3</td>
+</tr>
+<tr>
+<td>ZEI</td>
+<td>https://zei-world.com</td>
+<td>13/10/2026</td>
+<td>1</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="marche">Marché</h2>
+<h3 id="entreprises-du-regime-general-par-taille-2024">Entreprises du régime général par taille (2024)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Tranche d'effectif</th>
+<th>Entreprises</th>
+<th>Salariés</th>
+<th>Évol. vs 2023</th>
+<th>Cible</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Moins de 10</td>
+<td>2 070 273</td>
+<td>4 915 943</td>
+<td>+0,2 %</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>10-19</strong></td>
+<td>182 696</td>
+<td>2 440 785</td>
+<td>-0,2 %</td>
+<td>✔</td>
+</tr>
+<tr>
+<td><strong>20-49</strong></td>
+<td>117 047</td>
+<td>3 560 349</td>
+<td>+0,4 %</td>
+<td>✔</td>
+</tr>
+<tr>
+<td><strong>50-149</strong></td>
+<td>48 126</td>
+<td>3 853 242</td>
+<td>-0,0 %</td>
+<td>✔</td>
+</tr>
+<tr>
+<td><strong>150-199</strong></td>
+<td>5 358</td>
+<td>919 778</td>
+<td>+1,1 %</td>
+<td>✔</td>
+</tr>
+<tr>
+<td><strong>200-499</strong></td>
+<td>7 954</td>
+<td>2 339 622</td>
+<td>+0,2 %</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>500 et plus</td>
+<td>2 463</td>
+<td>2 769 849</td>
+<td>+2,8 %</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Entreprises dans les tranches ciblées : 361 181</strong></p>
+<p><em>Marché adressable en € : renseigner <code>market.annual_price_by_size_order</code> dans <code>config.yaml</code>.</em></p>
+<h3 id="entreprises-ciblees-par-secteur-croisees-avec-la-sinistralite-2024">Entreprises ciblées par secteur, croisées avec la sinistralité (2024)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Secteur (NAF)</th>
+<th>Entreprises ciblées</th>
+<th>Indice de fréquence AT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Commerce ; réparation d'automobiles et de motocycles (G)</td>
+<td>63 506</td>
+<td>26,4</td>
+</tr>
+<tr>
+<td>Santé humaine et action sociale (Q)</td>
+<td>39 390</td>
+<td>42,5</td>
+</tr>
+<tr>
+<td>Industrie manufacturière (C)</td>
+<td>39 259</td>
+<td>24,5</td>
+</tr>
+<tr>
+<td>Construction (F)</td>
+<td>36 559</td>
+<td>41,2</td>
+</tr>
+<tr>
+<td>Hébergement et restauration (I)</td>
+<td>30 854</td>
+<td>27,2</td>
+</tr>
+<tr>
+<td>Activités de services administratifs et de soutien (N)</td>
+<td>30 050</td>
+<td>33,9</td>
+</tr>
+<tr>
+<td>Activités spécialisées, scientifiques et techniques (M)</td>
+<td>29 825</td>
+<td>5,8</td>
+</tr>
+<tr>
+<td>Transports et entreposage (H)</td>
+<td>18 888</td>
+<td>46,7</td>
+</tr>
+<tr>
+<td>Information et communication (J)</td>
+<td>13 474</td>
+<td>3,3</td>
+</tr>
+<tr>
+<td>Activités financières et d'assurance (K)</td>
+<td>10 994</td>
+<td>3,7</td>
+</tr>
+<tr>
+<td>Administration publique (O)</td>
+<td>10 176</td>
+<td>15,1</td>
+</tr>
+<tr>
+<td>Enseignement (P)</td>
+<td>8 976</td>
+<td>10,3</td>
+</tr>
+<tr>
+<td>Autres activités de services (S)</td>
+<td>7 883</td>
+<td>18,5</td>
+</tr>
+<tr>
+<td>Arts, spectacles et activités récréatives (R)</td>
+<td>5 193</td>
+<td>40,0</td>
+</tr>
+<tr>
+<td>Activités immobilières (L)</td>
+<td>4 297</td>
+<td>14,2</td>
+</tr>
+<tr>
+<td>Production et distribution d'eau ; assainissement, gestion des déchets et dépollution (E)</td>
+<td>3 954</td>
+<td>37,1</td>
+</tr>
+<tr>
+<td>Production et distribution d'électricité, de gaz, de vapeur et d'air conditionné (D)</td>
+<td>769</td>
+<td>5,8</td>
+</tr>
+<tr>
+<td>Industries extractives (B)</td>
+<td>600</td>
+<td>27,8</td>
+</tr>
+<tr>
+<td>Agriculture, sylviculture et pêche (A)</td>
+<td>260</td>
+<td>27,0</td>
+</tr>
+<tr>
+<td>Activités extra-territoriales (U)</td>
+<td>154</td>
+<td>7,5</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="appels-doffres-publics-qhse-rse-boamp-6-sur-la-periode">Appels d'offres publics QHSE / RSE (BOAMP, 6 sur la période)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Objet</th>
+<th>Acheteur</th>
+<th>Nature</th>
+<th>Titulaire(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>21/10/2026</td>
+<td><a href="https://www.boamp.fr/pages/avis/?q=idweb:26-101926" target="_blank" rel="noopener noreferrer">Formation professionnelle 3 lots o Lot 1 : Stages de récupération partielle des points du </a></td>
+<td>Tisséo Voyageurs</td>
+<td>Avis de marché</td>
+<td>—</td>
+</tr>
+<tr>
+<td>19/10/2026</td>
+<td><a href="https://www.boamp.fr/pages/avis/?q=idweb:26-101646" target="_blank" rel="noopener noreferrer">Réalisation du bilan mi-parcours du plan régional de prévention et de gestion des déchets </a></td>
+<td>Région Guadeloupe</td>
+<td>Avis de marché</td>
+<td>—</td>
+</tr>
+<tr>
+<td>18/10/2026</td>
+<td><a href="https://www.boamp.fr/pages/avis/?q=idweb:26-100557" target="_blank" rel="noopener noreferrer">FORMATIONS A  LA CULTURE DE SECURITE</a></td>
+<td>Grand port fluvio maritime de l'axe Seine - Direction territoriale du Havre</td>
+<td>Résultat de marché</td>
+<td>WELBEES</td>
+</tr>
+<tr>
+<td>16/10/2026</td>
+<td><a href="https://www.boamp.fr/pages/avis/?q=idweb:26-100862" target="_blank" rel="noopener noreferrer">Accord-cadre à bons de commande de services pour la formation prévention et protection de </a></td>
+<td>Conseil Départemental du Nord</td>
+<td>Rectificatif</td>
+<td>—</td>
+</tr>
+<tr>
+<td>16/10/2026</td>
+<td><a href="https://www.boamp.fr/pages/avis/?q=idweb:26-100888" target="_blank" rel="noopener noreferrer">Expertise externe des risques psychosociaux pour le CHFQ</a></td>
+<td>Centre Hospitalier Poissy/Saint-Germain-En-Laye</td>
+<td>Avis de marché</td>
+<td>—</td>
+</tr>
+<tr>
+<td>16/10/2026</td>
+<td><a href="https://www.boamp.fr/pages/avis/?q=idweb:26-100011" target="_blank" rel="noopener noreferrer">Formations sécurité à destination des agents du Département de la Haute-Savoie</a></td>
+<td>Département de la Haute-Savoie</td>
+<td>Avis de marché</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="sinistralite-atmp">Sinistralité AT/MP</h2>
+<p><strong>France entière (2024) :</strong> 549 614 accidents du travail, indice de fréquence 26,4 pour 1 000 salariés ; 50 598 maladies professionnelles (+6,7 % vs 2023).</p>
+<p>Secteurs les plus exposés (indice de fréquence AT, 2024) :</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Secteur (NAF)</th>
+<th>Indice de fréquence AT</th>
+<th>Évol. vs 2023</th>
+<th>AT</th>
+<th>MP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transports et entreposage (H)</td>
+<td>46,7</td>
+<td>-0,8</td>
+<td>57 848</td>
+<td>2 679</td>
+</tr>
+<tr>
+<td>Santé humaine et action sociale (Q)</td>
+<td>42,5</td>
+<td>+1,0</td>
+<td>96 811</td>
+<td>6 260</td>
+</tr>
+<tr>
+<td>Construction (F)</td>
+<td>41,2</td>
+<td>-1,7</td>
+<td>68 430</td>
+<td>7 022</td>
+</tr>
+<tr>
+<td>Arts, spectacles et activités récréatives (R)</td>
+<td>40,0</td>
+<td>-1,1</td>
+<td>12 506</td>
+<td>220</td>
+</tr>
+<tr>
+<td>Production et distribution d'eau ; assainissement, gestion des déchets et dépollution (E)</td>
+<td>37,1</td>
+<td>+0,4</td>
+<td>6 595</td>
+<td>446</td>
+</tr>
+<tr>
+<td>Activités de services administratifs et de soutien (N)</td>
+<td>33,9</td>
+<td>-2,5</td>
+<td>67 726</td>
+<td>3 958</td>
+</tr>
+<tr>
+<td>Industries extractives (B)</td>
+<td>27,8</td>
+<td>+1,0</td>
+<td>563</td>
+<td>75</td>
+</tr>
+<tr>
+<td>Hébergement et restauration (I)</td>
+<td>27,2</td>
+<td>-0,2</td>
+<td>34 725</td>
+<td>2 405</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="sources-et-methode">Sources et méthode</h2>
+<p>Dernière collecte : 21/10/2026.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Volet</th>
+<th>Source</th>
+<th>État</th>
+<th>Détail</th>
+<th>Relevé le</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Presse</td>
+<td>Novethic</td>
+<td>✅</td>
+<td>lus 10, retenus 0, nouveaux 0</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Presse</td>
+<td>L'Info Durable</td>
+<td>✅</td>
+<td>lus 20, retenus 1, nouveaux 0</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Presse</td>
+<td>Actu-Environnement</td>
+<td>✅</td>
+<td>lus 7, retenus 0, nouveaux 0</td>
+<td>13/10/2026</td>
+</tr>
+<tr>
+<td>Presse</td>
+<td>Qualiblog</td>
+<td>✅</td>
+<td>lus 10, retenus 0, nouveaux 0</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Presse</td>
+<td>L'Usine Nouvelle</td>
+<td>✅</td>
+<td>lus 100, retenus 0, nouveaux 0</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Presse</td>
+<td>Maddyness</td>
+<td>✅</td>
+<td>lus 10, retenus 0, nouveaux 0</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Presse</td>
+<td>FrenchWeb</td>
+<td>✅</td>
+<td>lus 100, retenus 2, nouveaux 0</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Presse</td>
+<td>CNIL</td>
+<td>❌</td>
+<td>HTTPError: 503 Server Error: Service Unavailable for url: https://www.cnil.fr/fr/rss.xml</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Presse</td>
+<td>ANACT</td>
+<td>✅</td>
+<td>lus 58, retenus 2, nouveaux 0</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Presse</td>
+<td>Actu-Environnement (risques)</td>
+<td>✅</td>
+<td>lus 20, retenus 2, nouveaux 1</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Presse</td>
+<td>Actu-Environnement (déchets)</td>
+<td>❌</td>
+<td>ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Presse</td>
+<td>Actu-Environnement (énergie)</td>
+<td>✅</td>
+<td>lus 20, retenus 1, nouveaux 0</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Presse</td>
+<td>Blog BlueKanGo</td>
+<td>✅</td>
+<td>lus 12, retenus 4, nouveaux 0</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Presse</td>
+<td>Blog Preventeo</td>
+<td>✅</td>
+<td>lus 10, retenus 0, nouveaux 0</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Presse</td>
+<td>Bing News (recherches)</td>
+<td>✅</td>
+<td>requêtes 42, lus 199, retenus 53, nouveaux 10, échecs 0</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Presse</td>
+<td>Blog Utopies</td>
+<td>✅</td>
+<td>lus 0, retenus 0, nouveaux 0</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Presse</td>
+<td>Blog Agence Déclic</td>
+<td>✅</td>
+<td>lus 10, retenus 2, nouveaux 0</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>Red-on-line (https://www.red-on-line.com)</td>
+<td>✅</td>
+<td>inchangée</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>Preventeo (https://www.preventeo.com)</td>
+<td>✅</td>
+<td>inchangée</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>Tennaxia (https://www.tennaxia.com)</td>
+<td>❌</td>
+<td>accès refusé aux robots (403) : suivi manuel</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>BlueKanGo (https://www.bluekango.com)</td>
+<td>✅</td>
+<td>inchangée</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>Ennov (https://www.ennov.com)</td>
+<td>❌</td>
+<td>accès refusé aux robots (403) : suivi manuel</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>Qualios (https://www.qualios.com)</td>
+<td>✅</td>
+<td>inchangée</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>Greenly (https://www.greenly.earth)</td>
+<td>❌</td>
+<td>accès refusé aux robots (403) : suivi manuel</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>Sweep (https://www.sweep.net)</td>
+<td>✅</td>
+<td>modifiée</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>EcoVadis (https://ecovadis.com)</td>
+<td>✅</td>
+<td>inchangée</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>BODACC Red-on-line</td>
+<td>✅</td>
+<td>annonces 1, nouvelles 0</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>BODACC Preventeo</td>
+<td>✅</td>
+<td>annonces 3, nouvelles 0</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>BODACC Tennaxia</td>
+<td>✅</td>
+<td>annonces 0, nouvelles 0</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>BODACC BlueKanGo</td>
+<td>✅</td>
+<td>annonces 2, nouvelles 0</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>BODACC Ennov</td>
+<td>✅</td>
+<td>annonces 3, nouvelles 0</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>BODACC Qualios</td>
+<td>✅</td>
+<td>annonces 2, nouvelles 0</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>BODACC Qontinua</td>
+<td>✅</td>
+<td>annonces 0, nouvelles 0</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>BODACC Sweep</td>
+<td>✅</td>
+<td>annonces 0, nouvelles 0</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>BODACC EcoVadis</td>
+<td>✅</td>
+<td>annonces 3, nouvelles 0</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>ZEI (https://zei-world.com)</td>
+<td>✅</td>
+<td>inchangée</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>ORKI (https://orki.green)</td>
+<td>✅</td>
+<td>modifiée</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>Goodwill Management (https://goodwill-management.com)</td>
+<td>✅</td>
+<td>modifiée</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>Utopies (https://utopies.com)</td>
+<td>✅</td>
+<td>modifiée</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>Agence Déclic (https://www.agence-declic.fr)</td>
+<td>✅</td>
+<td>inchangée</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>BODACC ZEI</td>
+<td>✅</td>
+<td>annonces 1, nouvelles 0</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>BODACC ORKI</td>
+<td>✅</td>
+<td>annonces 1, nouvelles 0</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>BODACC Goodwill Management</td>
+<td>✅</td>
+<td>annonces 1, nouvelles 0</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>BODACC Ecolearn</td>
+<td>✅</td>
+<td>annonces 1, nouvelles 0</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>BODACC Utopies</td>
+<td>✅</td>
+<td>annonces 0, nouvelles 0</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Concurrents</td>
+<td>BODACC Agence Déclic</td>
+<td>✅</td>
+<td>annonces 2, nouvelles 0</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Marché</td>
+<td>Assurance Maladie (taille du marché)</td>
+<td>✅</td>
+<td>annee 2024, secteurs 22</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Marché</td>
+<td>BOAMP (appels d'offres)</td>
+<td>✅</td>
+<td>avis 91, nouveaux 2</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Marché</td>
+<td>France Travail (offres d'emploi)</td>
+<td>⏸</td>
+<td>non configuré (FT_CLIENT_ID / FT_CLIENT_SECRET absents)</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>AT/MP</td>
+<td>Assurance Maladie (sinistralité)</td>
+<td>✅</td>
+<td>annee 2024, lignes 88</td>
+<td>21/10/2026</td>
+</tr>
+<tr>
+<td>Réglementation</td>
+<td>EUR-Lex</td>
+<td>❌</td>
+<td>ReadTimeout: HTTPSConnectionPool(host='publications.europa.eu', port=443): Read timed out. (read timeout=90)</td>
+<td>21/10/2026</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>Presse</strong> : flux RSS spécialisés et recherches d'actualité Bing News, robots.txt respecté ; seuls le titre, le lien et un court extrait sont conservés (droit voisin de la presse).</li>
+<li><strong>Réglementation</strong> : actes et propositions publiés sur EUR-Lex (point d'accès SPARQL de l'Office des publications), filtrés par sujets et textes de référence.</li>
+<li><strong>Annonces légales</strong> : BODACC (DILA), par numéro SIREN des concurrents.</li>
+<li><strong>Classement</strong> : mots-clés par thème (<code>config.yaml</code>), sans IA générative ; un article est retenu s'il touche un thème « coeur » (ou cite un concurrent) et atteint un score minimal ; les articles en anglais et trop anciens sont écartés.</li>
+<li><strong>Concurrents</strong> : comparaison du texte visible des pages publiques entre deux collectes.</li>
+<li><strong>Marché &amp; AT/MP</strong> : open data Assurance Maladie (data.ameli.fr), régime général ; BOAMP (DILA) ; France Travail si configuré.</li>
+<li><strong>Limites</strong> : le régime général exclut le régime agricole (MSA), d'où le faible poids du secteur A ; la somme des secteurs peut différer légèrement du total national (secteurs non renseignés, secret statistique).</li>
+<li>Les chiffres sont des <strong>données brutes datées</strong> : leur interprétation relève de l'équipe.</li>
+</ul>
+  </main>
+</div>
+<footer><p>Généré automatiquement le 21/10/2026 à 15:14 à partir de données publiques datées. L'interprétation revient à l'équipe Reglo.</p></footer>
+</body>
+</html>
